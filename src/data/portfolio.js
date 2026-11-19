@@ -10,7 +10,7 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/ansh-srivastava-68004b2a6",
   github: "https://github.com/SrivastavaAnsh",
   resumeUrl: "/Ansh_Srivastava.pdf",
-  statusBadge: "Open to Full-Time & Internships · Remote / Hybrid · iOS · Android · Design",
+  statusBadge: "Open to Full-Time · Internships · Remote / Hybrid · iOS · Android · Design",
 };
 
 export const stats = [

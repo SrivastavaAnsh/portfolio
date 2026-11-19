@@ -115,7 +115,7 @@ export const Hero = () => {
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent" />
           </span>
           <span className="on-video-text text-frost/85 tracking-[0.25em] text-[9px] sm:text-[11px] font-light uppercase">
-            OPEN TO FULL-TIME &amp; INTERNSHIPS · REMOTE / HYBRID · <span className="normal-case">iOS</span> · ANDROID · DESIGN
+            OPEN TO FULL-TIME · INTERNSHIPS · REMOTE / HYBRID · <span className="normal-case">iOS</span> · ANDROID · DESIGN
           </span>
         </motion.div>
 
