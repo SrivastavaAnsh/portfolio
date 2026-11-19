@@ -1,9 +1,9 @@
 export const personalInfo = {
   name: "Ansh Srivastava",
   firstName: "ANSH",
-  role: "iOS Developer & Swift Innovator",
-  heroTagline: "Apple Swift Student Challenge 2026 Winner (WWDC26 at Apple Park, Cupertino) crafting high-craft SwiftUI & SpriteKit experiences.",
-  summary: "I build native iOS applications that bridge interactive simulations and scalable mobile architectures. From winning Apple's Swift Student Challenge and attending WWDC26 at Apple Park to engineering enterprise iOS platforms at Infosys, I design with extreme attention to detail, fluid performance, and Apple design guidelines.",
+  role: "Mobile Developer & Product Designer",
+  heroTagline: "Apple Swift Student Challenge 2026 Winner crafting fluid, interactive & unified mobile experiences across iOS, Android and product design.",
+  summary: "I build high-craft mobile experiences, interactive simulations, and scalable architectures across iOS, Android and product design. Recognized by Apple as a Swift Student Challenge 2026 Winner and engineering enterprise platforms at Infosys, I design with extreme attention to detail, fluid performance, and thoughtful user-centered aesthetics.",
   location: "Greater Noida, Uttar Pradesh, India",
   phone: "+91 8545063769",
   email: "srivastavaansh3456@gmail.com",
@@ -15,9 +15,9 @@ export const personalInfo = {
 
 export const stats = [
   {
-    value: "WWDC26",
-    label: "Apple Park Winner",
-    sub: "Swift Student Challenge '26 In-Person",
+    value: "2026",
+    label: "Swift Student Challenge",
+    sub: "Global Winner by Apple",
   },
   {
     value: "8.82",
@@ -202,15 +202,15 @@ export const experiences = [
     accent: "#4E8CF9",
   },
   {
-    role: "Global Winner · WWDC26 In-Person",
-    company: "Apple's Swift Student Challenge 2026",
+    role: "Global Winner",
+    company: "Apple Swift Student Challenge 2026",
     period: "2026",
-    location: "Apple Park, Cupertino, CA",
+    location: "Global / Cupertino, CA",
     type: "Apple Global Recognition",
     description: [
       "Selected by Apple as a distinguished winner of the Swift Student Challenge 2026 for an outstanding Swift Playground submission.",
-      "Invited to attend the Worldwide Developers Conference (WWDC26) in person at Apple Park, Cupertino.",
-      "Engaged directly with Apple engineers, design teams, and fellow innovators at the global forefront of Apple platforms.",
+      "Recognized for innovative mobile engineering, thoughtful UI/UX interaction design, and fluid real-time performance.",
+      "Demonstrated mastery of Apple design principles, intuitive user experience, and modern mobile app architecture.",
     ],
     accent: "#B600A8",
   },

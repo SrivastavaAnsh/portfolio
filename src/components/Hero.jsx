@@ -92,11 +92,11 @@ export const Hero = () => {
             className="on-video-text text-white font-light leading-relaxed"
             style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.35rem)' }}
           >
-            Apple Swift Student Challenge 2026 Winner (attended WWDC26 at Apple Park, Cupertino) crafting spatial, biological &amp; unified iOS experiences with SwiftUI and SpriteKit.
+            Apple Swift Student Challenge 2026 Winner crafting fluid, interactive &amp; unified mobile experiences across iOS, Android and product design.
           </p>
 
           <p className="on-video-text text-frost/95 font-light uppercase tracking-[0.2em] text-[10px] sm:text-xs mt-4">
-            WWDC26 Winner @ Apple Park · Infosys iOS Intern · B.Tech CSE @ Galgotias
+            Swift Student Challenge 2026 Winner · Infosys Mobile Intern · B.Tech CSE @ Galgotias
           </p>
         </motion.div>
       </div>

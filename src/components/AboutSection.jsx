@@ -81,7 +81,7 @@ const FloatingChip = ({ item }) => {
 
 export const AboutSection = () => {
   const storyText = 
-    "I am an iOS Developer and Apple Swift Student Challenge 2026 Winner. I build high-craft mobile apps merging interactive SpriteKit simulations with fluid SwiftUI interfaces. From winning WWDC26 at Apple Park to engineering enterprise platforms at Infosys, I design software that feels like magic in the user's hands.";
+    "I am a Mobile Developer & Product Designer and Apple Swift Student Challenge 2026 Winner. I craft intuitive, high-performance mobile experiences and design systems across iOS and Android. Recognized globally by Apple and engineering enterprise platforms at Infosys, I build software that feels fluid, intentional, and magical in the user's hands.";
 
   return (
     <section
