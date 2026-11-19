@@ -1,59 +1,39 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 export const Hero = () => {
-  const videoRef = useRef(null);
-  const [videoLoaded, setVideoLoaded] = useState(false);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const playVideo = () => {
-      const p = video.play();
-      if (p && p.catch) p.catch(() => {});
-    };
-
-    playVideo();
-    video.addEventListener('loadeddata', playVideo);
-    return () => video.removeEventListener('loadeddata', playVideo);
-  }, []);
+  const [imgLoaded, setImgLoaded] = useState(false);
 
   return (
     <section
       className="relative w-full h-[70vh] min-h-[560px] md:h-screen md:min-h-0 flex flex-col bg-primary"
       style={{ overflowX: 'clip' }}
     >
-      {/* Cinematic Video Background & Overlays */}
+      {/* Cinematic Custom Artwork Background & Overlays */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-primary">
-        <video
-          ref={videoRef}
-          src="/assets/hero-bg.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          aria-hidden="true"
-          tabIndex={-1}
-          disablePictureInPicture
-          onLoadedData={() => setVideoLoaded(true)}
-          className={`absolute inset-x-0 top-0 w-full h-[155%] md:h-full object-cover object-center transition-opacity duration-1000 ${
-            videoLoaded ? 'opacity-100' : 'opacity-0'
+        <motion.img
+          src="/assets/hero-cinematic.jpg"
+          alt="Ansh Srivastava - iOS Developer"
+          onLoad={() => setImgLoaded(true)}
+          initial={{ scale: 1.05 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 10, ease: 'easeOut' }}
+          className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ${
+            imgLoaded ? 'opacity-100' : 'opacity-0'
           }`}
         />
 
         {/* Noise overlay */}
-        <div className="noise-overlay absolute inset-0 opacity-[0.3] mix-blend-overlay pointer-events-none" />
+        <div className="noise-overlay absolute inset-0 opacity-[0.25] mix-blend-overlay pointer-events-none" />
 
-        {/* Gradient overlays matching 5ach1n.vercel.app */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-transparent to-transparent pointer-events-none" />
+        {/* Ambient Vignette & Gradient Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent pointer-events-none" />
 
         <div
           className="absolute inset-0 md:hidden pointer-events-none"
           style={{
             background:
-              'linear-gradient(100deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.34) 55%, rgba(0,0,0,0.14) 100%)',
+              'linear-gradient(100deg, rgba(12,12,12,0.75) 0%, rgba(12,12,12,0.45) 55%, rgba(12,12,12,0.15) 100%)',
           }}
         />
 
@@ -61,7 +41,7 @@ export const Hero = () => {
           className="absolute inset-0 hidden md:block pointer-events-none"
           style={{
             background:
-              'linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.34) 40%, rgba(0,0,0,0.04) 72%, rgba(0,0,0,0) 100%)',
+              'linear-gradient(90deg, rgba(12,12,12,0.82) 0%, rgba(12,12,12,0.48) 42%, rgba(12,12,12,0.06) 72%, rgba(12,12,12,0) 100%)',
           }}
         />
 
