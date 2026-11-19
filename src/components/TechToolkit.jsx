@@ -134,7 +134,7 @@ export const TechToolkit = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.08 }}
-              className="rounded-2xl border border-frost/15 bg-black-100 p-5 sm:p-6 flex flex-col justify-between hover:border-frost/40 transition-colors shadow-lg"
+              className="rounded-2xl sm:rounded-3xl border-2 border-frost/70 bg-black-100 p-5 sm:p-6 flex flex-col justify-between hover:border-frost transition-all duration-300 shadow-xl"
             >
               <div>
                 <div className="flex items-center gap-2.5 mb-4">

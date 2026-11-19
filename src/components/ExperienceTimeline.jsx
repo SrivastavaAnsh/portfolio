@@ -48,7 +48,7 @@ export const ExperienceTimeline = () => {
                 </div>
 
                 {/* Card Container */}
-                <div className="rounded-2xl border border-frost/15 bg-black-100 p-5 sm:p-6 hover:border-frost/40 transition-all duration-300 shadow-xl">
+                <div className="rounded-2xl sm:rounded-3xl border-2 border-frost/70 bg-black-100 p-5 sm:p-6 hover:border-frost transition-all duration-300 shadow-xl">
                   {/* Top Badge & Date */}
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                     <span
