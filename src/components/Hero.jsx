@@ -115,7 +115,7 @@ export const Hero = () => {
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent" />
           </span>
           <span className="on-video-text text-frost/85 uppercase tracking-[0.28em] text-[9px] sm:text-[11px] font-light">
-            Open to iOS Roles · Swift &amp; Mobile Engineering
+            Open to Remote / Hybrid · iOS, Android &amp; Design
           </span>
         </motion.div>
 
