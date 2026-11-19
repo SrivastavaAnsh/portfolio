@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { flagshipProjects } from '../data/portfolio';
 import ProjectMockup from './ProjectMockup';
 import { ArrowUpRight, Github, Sparkles } from 'lucide-react';
+import { renderWithIOS } from '../utils/text';
 
 const StackCard = ({ project, index, total, progress }) => {
   const targetScale = 1 - (total - 1 - index) * 0.035;
@@ -28,7 +29,7 @@ const StackCard = ({ project, index, total, progress }) => {
             </span>
             <div className="flex-1 min-w-[160px]">
               <p className="text-secondary uppercase tracking-[0.25em] text-[9px] sm:text-[11px] font-light">
-                {project.category}
+                {renderWithIOS(project.category)}
               </p>
               <h3
                 className="text-frost font-bold uppercase tracking-tight leading-tight"
@@ -116,7 +117,7 @@ const StackCard = ({ project, index, total, progress }) => {
                     key={tag.name}
                     className="rounded-full border border-frost/20 bg-primary/40 text-frost/80 px-2.5 py-0.5 text-[10px] uppercase tracking-wider"
                   >
-                    {tag.name}
+                    {renderWithIOS(tag.name)}
                   </span>
                 ))}
               </div>

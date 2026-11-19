@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowUpRight, Sparkles, Smartphone, Terminal, Globe, Award } from 'lucide-react';
+import { renderWithIOS } from '../utils/text';
 
 const marqueeItemsRow1 = [
   {
@@ -105,7 +106,7 @@ export const MarqueeShowcase = () => {
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-[9px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full bg-frost/10 text-frost/90 border border-frost/15">
-                    {item.badge}
+                    {renderWithIOS(item.badge)}
                   </span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-frost/40 group-hover:text-frost group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                 </div>
@@ -113,7 +114,7 @@ export const MarqueeShowcase = () => {
                   {item.title}
                 </h4>
                 <p className="text-secondary text-xs font-light mt-0.5">
-                  {item.type}
+                  {renderWithIOS(item.type)}
                 </p>
               </div>
 
@@ -123,7 +124,7 @@ export const MarqueeShowcase = () => {
                     key={t}
                     className="text-[9px] uppercase tracking-wider text-frost/60 px-2 py-0.5 rounded-full border border-frost/10"
                   >
-                    {t}
+                    {renderWithIOS(t)}
                   </span>
                 ))}
               </div>
@@ -144,7 +145,7 @@ export const MarqueeShowcase = () => {
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-[9px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full bg-accent/15 text-accent border border-accent/30">
-                    {item.badge}
+                    {renderWithIOS(item.badge)}
                   </span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-frost/40 group-hover:text-frost group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                 </div>
@@ -152,7 +153,7 @@ export const MarqueeShowcase = () => {
                   {item.title}
                 </h4>
                 <p className="text-secondary text-xs font-light mt-0.5">
-                  {item.type}
+                  {renderWithIOS(item.type)}
                 </p>
               </div>
 
@@ -162,7 +163,7 @@ export const MarqueeShowcase = () => {
                     key={t}
                     className="text-[9px] uppercase tracking-wider text-frost/60 px-2 py-0.5 rounded-full border border-frost/10"
                   >
-                    {t}
+                    {renderWithIOS(t)}
                   </span>
                 ))}
               </div>

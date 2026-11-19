@@ -12,7 +12,7 @@ export const Footer = () => {
             {personalInfo.firstName} {personalInfo.name.split(' ')[1]}
           </span>
           <p className="text-secondary text-xs sm:text-sm font-light mt-1 max-w-md">
-            Apple Swift Student Challenge 2026 Winner · Mobile Developer &amp; Product Designer.
+            Apple Swift Student Challenge 2026 Winner · iOS Developer &amp; Product Designer.
           </p>
         </div>
 

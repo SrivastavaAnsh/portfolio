@@ -54,8 +54,8 @@ export const Navbar = () => {
           <span className="text-frost text-lg md:text-xl font-semibold uppercase tracking-widest">
             {personalInfo.firstName}
           </span>
-          <span className="text-frost/50 text-[10px] md:text-xs font-light uppercase tracking-[0.28em] hidden sm:block">
-            iOS Developer &amp; Swift Innovator
+          <span className="text-frost/50 text-[10px] md:text-xs font-light tracking-[0.24em] hidden sm:block">
+            <span className="normal-case font-normal text-frost/70">iOS</span> DEVELOPER &amp; PRODUCT DESIGNER
           </span>
         </a>
 

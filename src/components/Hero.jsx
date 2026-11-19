@@ -64,8 +64,8 @@ export const Hero = () => {
           className="flex items-center gap-3 mb-4 sm:mb-6"
         >
           <span className="h-[1px] w-8 sm:w-14 bg-frost/60" />
-          <span className="on-video-text text-frost/90 uppercase tracking-[0.4em] text-[9px] sm:text-[11px] font-light">
-            iOS Developer &amp; Swift Innovator
+          <span className="on-video-text text-frost/90 tracking-[0.35em] text-[9px] sm:text-[11px] font-light">
+            <span className="normal-case font-normal text-white">iOS</span> DEVELOPER &amp; PRODUCT DESIGNER
           </span>
         </motion.div>
 
@@ -114,8 +114,8 @@ export const Hero = () => {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-60" />
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent" />
           </span>
-          <span className="on-video-text text-frost/85 uppercase tracking-[0.25em] text-[9px] sm:text-[11px] font-light">
-            Open to Full-Time &amp; Internships · Remote / Hybrid · iOS · Android · Design
+          <span className="on-video-text text-frost/85 tracking-[0.25em] text-[9px] sm:text-[11px] font-light uppercase">
+            OPEN TO FULL-TIME &amp; INTERNSHIPS · REMOTE / HYBRID · <span className="normal-case font-medium text-white">iOS</span> · ANDROID · DESIGN
           </span>
         </motion.div>
 

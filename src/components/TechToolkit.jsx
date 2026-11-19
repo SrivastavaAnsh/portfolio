@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Code2, Smartphone, Database, Layers, Sparkles } from 'lucide-react';
+import { renderWithIOS } from '../utils/text';
 import {
   SwiftIcon,
   SwiftUIIcon,
@@ -148,7 +149,7 @@ export const TechToolkit = () => {
                     <Icon className="w-4 h-4" style={{ color: cat.color }} />
                   </div>
                   <h3 className="text-frost font-bold uppercase tracking-wide text-base sm:text-lg">
-                    {cat.name}
+                    {renderWithIOS(cat.name)}
                   </h3>
                 </div>
 
