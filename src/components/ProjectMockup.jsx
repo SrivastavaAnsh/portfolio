@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Gauge,
+  Atom,
   Cpu,
   Activity,
   CheckCircle2,
@@ -25,11 +25,11 @@ const bentoData = {
     headerTitle: 'Spatial & Simulation Architecture',
     headerSub: 'Native Swift 6 · SpriteKit Engine · Apple Foundation Models',
     statHero: {
-      value: '60 FPS',
-      label: 'Physics World Engine',
-      sub: 'Zero-frame-drop 2D physics simulation pipeline embedded directly inside SwiftUI declarative hierarchy.',
-      icon: Gauge,
-      badge: 'SpriteKit + SKScene',
+      value: 'Interactive',
+      label: 'Cellular Physics Engine',
+      sub: 'Touch-reactive organelle physics, fluid amoeba locomotion simulations, and dynamic biological signaling in SwiftUI.',
+      icon: Atom,
+      badge: 'SpriteKit + Physics World',
     },
     tileTopRight: {
       value: 'On-Device',

@@ -46,7 +46,7 @@ const StackCard = ({ project, index, total, progress }) => {
                 href={project.appStoreUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 rounded-full bg-accent hover:bg-accent-glow text-white px-3.5 sm:px-4 py-1.5 text-xs font-medium uppercase tracking-wider transition-all duration-300 shadow-md shadow-accent/25 hover:scale-105"
+                className="flex items-center gap-1.5 rounded-full bg-accent/20 border border-accent hover:bg-accent hover:text-white text-frost px-3.5 sm:px-4 py-1.5 text-xs font-medium uppercase tracking-wider transition-all duration-300 hover:scale-105"
               >
                 <span>App Store</span>
                 <ArrowUpRight className="w-3 h-3" />
