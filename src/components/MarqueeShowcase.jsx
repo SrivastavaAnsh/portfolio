@@ -22,7 +22,7 @@ const marqueeItemsRow1 = [
     link: '#',
   },
   {
-    title: 'Loop: Manage Organization',
+    title: 'Loop : Manage Organization',
     type: 'Unified Organization Platform',
     badge: 'TestFlight Beta',
     icon: Smartphone,

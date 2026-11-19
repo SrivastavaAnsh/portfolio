@@ -78,7 +78,7 @@ export const flagshipProjects = [
   {
     id: "loop",
     number: "02",
-    name: "Loop: Manage Organization",
+    name: "Loop : Manage Organization",
     subtitle: "Your Organization, All in One Loop",
     category: "ORGANIZATIONAL PLATFORM · TESTFLIGHT",
     description: "A unified enterprise platform built with SwiftUI, PostgreSQL, and robust backend APIs to streamline members, events, announcements, attendance, and administrative approvals.",
