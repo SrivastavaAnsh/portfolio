@@ -1,23 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import { personalInfo, navLinks } from '../data/portfolio';
-import { Menu, X, ArrowUpRight, Download, FileText } from 'lucide-react';
+import { personalInfo } from '../data/portfolio';
+import { Menu, X } from 'lucide-react';
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
+  const links = [
+    { id: 'about', title: 'About' },
+    { id: 'projects', title: 'Projects' },
+    { id: 'experience', title: 'Work' },
+    { id: 'skills', title: 'Skills' },
+    { id: 'contact', title: 'Contact' },
+  ];
+
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 60);
+      setScrolled(window.scrollY > 80);
 
-      // Detect current section
-      const sections = navLinks.map(l => document.getElementById(l.id));
       const scrollPos = window.scrollY + 200;
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const sec = sections[i];
+      for (let i = links.length - 1; i >= 0; i--) {
+        const sec = document.getElementById(links[i].id);
         if (sec && sec.offsetTop <= scrollPos) {
-          setActiveSection(navLinks[i].id);
+          setActiveSection(links[i].id);
           break;
         }
       }
@@ -29,13 +35,13 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 px-6 md:px-12 transition-all duration-300 ${
+      className={`w-full flex items-center fixed top-0 z-30 px-6 md:px-10 transition-all duration-300 ${
         scrolled
-          ? 'py-3.5 bg-primary/85 backdrop-blur-md border-b border-frost/10 shadow-lg'
-          : 'py-5 sm:py-7 bg-transparent border-b border-transparent'
+          ? 'py-3 bg-primary/80 backdrop-blur-md border-b border-frost/10'
+          : 'py-5 sm:py-6 bg-transparent border-b border-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <div className="w-full flex justify-between items-center">
         {/* Brand / Logo */}
         <a
           href="#"
@@ -43,87 +49,81 @@ export const Navbar = () => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className="flex flex-col leading-tight group"
+          className="flex flex-col leading-tight cursor-pointer"
         >
-          <span className="text-frost text-lg md:text-xl font-bold uppercase tracking-widest group-hover:text-accent-cyan transition-colors">
+          <span className="text-frost text-lg md:text-xl font-semibold uppercase tracking-widest">
             {personalInfo.firstName}
           </span>
           <span className="text-frost/50 text-[10px] md:text-xs font-light uppercase tracking-[0.28em] hidden sm:block">
-            iOS Developer · WWDC26 Winner
+            iOS Developer &amp; Swift Innovator
           </span>
         </a>
 
         {/* Desktop Nav Items */}
-        <ul className="hidden md:flex items-center gap-8 lg:gap-10 list-none">
-          {navLinks.map((link) => (
-            <li key={link.id}>
-              <a
-                href={`#${link.id}`}
-                className={`text-sm uppercase tracking-wider font-medium transition-all duration-200 cursor-pointer ${
-                  activeSection === link.id
-                    ? 'text-frost font-bold'
-                    : 'text-frost/70 hover:text-frost hover:opacity-80'
-                }`}
-              >
-                {link.title}
-              </a>
+        <ul className="list-none hidden sm:flex flex-row items-center gap-8 md:gap-12">
+          {links.map((link) => (
+            <li
+              key={link.id}
+              className={`${
+                activeSection === link.id ? 'text-frost' : 'text-frost/70'
+              } hover:opacity-70 hover:text-frost transition-all duration-200 text-sm md:text-base font-medium uppercase tracking-wider cursor-pointer`}
+            >
+              <a href={`#${link.id}`}>{link.title}</a>
             </li>
           ))}
 
-          {/* Resume CTA */}
+          {/* Clean Outline Pill Resume Button */}
           <li>
             <a
               href="#contact"
-              className="flex items-center gap-2 rounded-full border border-frost/50 text-frost text-xs font-medium uppercase tracking-widest px-5 py-2 hover:bg-frost/10 hover:border-frost transition-all duration-300 shadow-sm"
+              className="rounded-full border border-frost/50 text-frost text-xs md:text-sm font-medium uppercase tracking-widest px-5 py-2 hover:bg-frost/10 transition-colors duration-300 inline-block"
             >
-              <FileText className="w-3.5 h-3.5 text-accent" />
-              <span>Get In Touch</span>
+              Resume
             </a>
           </li>
         </ul>
 
         {/* Mobile Hamburger Toggle */}
-        <div className="md:hidden flex items-center">
+        <div className="sm:hidden flex flex-1 justify-end items-center">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-frost focus:outline-none"
+            className="text-frost p-1 focus:outline-none"
             aria-label="Toggle Menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
-        </div>
-      </div>
 
-      {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-black-100/95 backdrop-blur-xl border-b border-frost/15 px-6 py-6 shadow-2xl animate-in slide-in-from-top-4 duration-200">
-          <ul className="flex flex-col gap-4 list-none">
-            {navLinks.map((link) => (
-              <li key={link.id}>
-                <a
-                  href={`#${link.id}`}
+          {/* Mobile Dropdown */}
+          <div
+            className={`${
+              mobileMenuOpen ? 'flex' : 'hidden'
+            } p-6 bg-black-100 border border-frost/10 absolute top-16 right-0 mx-4 my-2 min-w-[180px] z-20 rounded-2xl shadow-2xl`}
+          >
+            <ul className="list-none flex justify-end items-start flex-1 flex-col gap-4">
+              {links.map((link) => (
+                <li
+                  key={link.id}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`text-base uppercase tracking-wider block py-1.5 font-medium ${
-                    activeSection === link.id ? 'text-frost font-bold' : 'text-frost/70'
+                  className={`font-medium uppercase tracking-wider cursor-pointer text-sm ${
+                    activeSection === link.id ? 'text-frost' : 'text-frost/60'
                   }`}
                 >
-                  {link.title}
+                  <a href={`#${link.id}`}>{link.title}</a>
+                </li>
+              ))}
+              <li className="pt-2 border-t border-frost/10 w-full">
+                <a
+                  href="#contact"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-frost/60 text-sm font-medium uppercase tracking-wider block"
+                >
+                  Resume
                 </a>
               </li>
-            ))}
-            <li className="pt-3 border-t border-frost/10">
-              <a
-                href="#contact"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 rounded-xl bg-accent text-white py-3 text-sm font-semibold uppercase tracking-wider"
-              >
-                <FileText className="w-4 h-4" />
-                <span>Contact &amp; Resume</span>
-              </a>
-            </li>
-          </ul>
+            </ul>
+          </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 };
