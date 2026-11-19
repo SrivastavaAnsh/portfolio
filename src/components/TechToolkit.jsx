@@ -99,19 +99,19 @@ export const TechToolkit = () => {
       </div>
 
       {/* Skills Ribbon */}
-      <div className="relative overflow-hidden mb-12 sm:mb-16">
+      <div className="tech-marquee-wrapper group relative overflow-hidden mb-12 sm:mb-16 cursor-pointer">
         <div className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-28 z-10 bg-gradient-to-r from-primary to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-28 z-10 bg-gradient-to-l from-primary to-transparent" />
 
-        <div className="flex gap-3 sm:gap-4 w-max animate-marquee">
+        <div className="tech-marquee flex w-max gap-4 sm:gap-6 px-3 group-hover:[animation-play-state:paused]">
           {[...marqueeSkills, ...marqueeSkills].map((skill, idx) => {
             const Icon = skill.icon;
             return (
               <div
                 key={`${skill.name}-${idx}`}
-                className="flex items-center gap-3 rounded-full border border-frost/15 bg-black-100 px-5 py-2.5 sm:px-6 sm:py-3 shrink-0 hover:border-frost/40 hover:bg-frost/5 transition-all duration-300 shadow-md"
+                className="flex items-center gap-3.5 rounded-full border border-frost/30 bg-black-100 px-5 py-3 sm:px-6 sm:py-3.5 shrink-0 hover:border-frost/60 hover:bg-frost/5 transition-all duration-300 shadow-md"
               >
-                <div className="w-5 h-5 sm:w-6 sm:h-6 shrink-0 flex items-center justify-center">
+                <div className="w-6 h-6 sm:w-7 sm:h-7 shrink-0 flex items-center justify-center">
                   <Icon className="w-full h-full object-contain" />
                 </div>
                 <span className="text-frost font-medium uppercase tracking-wider text-xs sm:text-sm whitespace-nowrap">

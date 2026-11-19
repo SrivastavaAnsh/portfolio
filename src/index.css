@@ -90,8 +90,21 @@ body {
   will-change: transform, opacity;
 }
 
-/* Marquee pause on hover */
+/* Marquee animations & pause on hover */
+@keyframes tech-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.tech-marquee {
+  animation: tech-scroll 36s linear infinite;
+  will-change: transform;
+}
+
+.tech-marquee:hover,
+.tech-marquee-wrapper:hover .tech-marquee,
 .marquee-container:hover .animate-marquee,
-.marquee-container:hover .animate-marquee-reverse {
-  animation-play-state: paused;
+.marquee-container:hover .animate-marquee-reverse,
+.animate-marquee:hover {
+  animation-play-state: paused !important;
 }
