@@ -114,8 +114,8 @@ export const Hero = () => {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-60" />
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent" />
           </span>
-          <span className="on-video-text text-frost/85 uppercase tracking-[0.28em] text-[9px] sm:text-[11px] font-light">
-            Open to Remote / Hybrid · iOS · Android · Design Roles
+          <span className="on-video-text text-frost/85 uppercase tracking-[0.25em] text-[9px] sm:text-[11px] font-light">
+            Open to Full-Time &amp; Internships · Remote / Hybrid · iOS · Android · Design
           </span>
         </motion.div>
 
