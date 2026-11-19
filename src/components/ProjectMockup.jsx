@@ -1,321 +1,340 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  Sparkles,
+  Gauge,
+  Cpu,
   Activity,
-  Users,
-  Calendar,
   CheckCircle2,
-  Truck,
-  Navigation,
-  AlertCircle,
-  ArrowUpRight,
-  UserCheck,
-  Search,
-  Star,
+  Layers,
+  Zap,
   ShieldCheck,
+  Workflow,
+  Users,
+  Radio,
+  Database,
+  Lock,
   Cloud,
+  Server,
+  Code2,
 } from 'lucide-react';
 
+const bentoData = {
+  cellumina: {
+    accentColor: '#38BDF8',
+    glowBg: 'rgba(56, 189, 248, 0.14)',
+    headerBadge: 'Apple Swift Student Challenge Winner',
+    headerTitle: 'Spatial & Simulation Architecture',
+    headerSub: 'Native Swift 6 · SpriteKit Engine · Apple Foundation Models',
+    statHero: {
+      value: '60 FPS',
+      label: 'Physics World Engine',
+      sub: 'Zero-frame-drop 2D physics simulation pipeline embedded directly inside SwiftUI declarative hierarchy.',
+      icon: Gauge,
+      badge: 'SpriteKit + SKScene',
+    },
+    tileTopRight: {
+      value: 'On-Device',
+      label: 'Apple Foundation AI',
+      sub: 'Zero-latency local machine learning pipeline providing dynamic biological explanations without network roundtrips.',
+      icon: Cpu,
+      badge: 'Private Neural Engine',
+    },
+    tileBottomLeft: {
+      title: 'Interactive Cell Biology Modules',
+      sub: 'Engineered touch-reactive organelles for Plant, Animal, and Bacterial cells with amoeba pseudopod physics & cellular signaling.',
+      icon: Activity,
+      tags: ['Endocrine Signaling', 'Amoeba Physics', 'Organelle Haptics'],
+    },
+    tileBottomRight: {
+      value: 'App Store Live',
+      label: 'Production Build v2.1',
+      sub: 'Reviewed and certified by Apple. Live in the hands of learners worldwide with strict memory safety & concurrency.',
+      icon: CheckCircle2,
+      badge: 'Certified iOS Release',
+    },
+    footerSpec: 'Built with Swift 6 · SwiftUI 5 · SpriteKit · iOS 17+ SDK',
+  },
+  loop: {
+    accentColor: '#C084FC',
+    glowBg: 'rgba(192, 132, 252, 0.14)',
+    headerBadge: 'TestFlight Beta · Enterprise Platform',
+    headerTitle: 'Multi-Tenant Enterprise Architecture',
+    headerSub: 'SwiftUI · PostgreSQL Backend · Role-Based Workflows',
+    statHero: {
+      value: 'Multi-Tenant',
+      label: 'Tenant Schema Isolation',
+      sub: 'Segregated organizational database architecture ensuring data isolation, custom branding, and independent administrative domains.',
+      icon: Layers,
+      badge: 'PostgreSQL + Row-Level Security',
+    },
+    tileTopRight: {
+      value: '<40ms',
+      label: 'Real-Time Sync Engine',
+      sub: 'High-frequency broadcast notifications, instant campus announcements, and event check-ins with sub-50ms propagation.',
+      icon: Zap,
+      badge: 'Instant Broadcast',
+    },
+    tileBottomLeft: {
+      title: 'Role-Based Access & Governance',
+      sub: 'Dedicated role-specific UX paradigms tailored for Admins, Coordinators, and Members with granular audit logging.',
+      icon: ShieldCheck,
+      tags: ['Executive Admin', 'Coordinator Portal', 'Member Access'],
+    },
+    tileBottomRight: {
+      value: 'Multi-Step',
+      label: 'Approval & Budget Pipeline',
+      sub: 'Engineered approval workflows for event proposals, budget allocations, and facility reservations with cryptographic verification.',
+      icon: Workflow,
+      badge: 'Audit Verified',
+    },
+    footerSpec: 'SwiftUI Client · PostgreSQL · RESTful Microservices · TestFlight Live',
+  },
+  fleetos: {
+    accentColor: '#34D399',
+    glowBg: 'rgba(52, 211, 153, 0.14)',
+    headerBadge: 'Infosys MDC · Industry Production Build',
+    headerTitle: 'Enterprise Fleet Telematics Engine',
+    headerSub: 'Enterprise iOS · Real-Time Telematics · Supabase & Firebase',
+    statHero: {
+      value: 'Tri-Role',
+      label: 'Multi-Persona Ecosystem',
+      sub: 'Engineered distinct, cohesive view hierarchies tailored specifically for Fleet Managers, Commercial Drivers, and Technicians.',
+      icon: Users,
+      badge: '3 Persona Workflows',
+    },
+    tileTopRight: {
+      value: 'Live',
+      label: 'Vehicle Telemetry Pipeline',
+      sub: 'Real-time telemetry streaming for speed tracking, fuel efficiency, engine error codes, and predictive service dispatch.',
+      icon: Radio,
+      badge: 'Real-Time Ingestion',
+    },
+    tileBottomLeft: {
+      title: 'Event-Driven Sync & Dispatch Architecture',
+      sub: 'Real-time event synchronization and state persistence using Supabase and Firebase Realtime Database across distributed fleets.',
+      icon: Database,
+      tags: ['Supabase DB', 'Firebase Realtime', 'Live Dispatch'],
+    },
+    tileBottomRight: {
+      value: 'Infosys MDC',
+      label: 'Agile Sprint Delivery',
+      sub: 'Delivered in a production Agile sprint environment at Infosys Mysore Development Centre with Jira ticket management and CI/CD pipelines.',
+      icon: CheckCircle2,
+      badge: 'Enterprise Agile Certified',
+    },
+    footerSpec: 'Enterprise iOS · Swift · Supabase · Firebase · Agile / Jira',
+  },
+  connexus: {
+    accentColor: '#FBBF24',
+    glowBg: 'rgba(251, 191, 36, 0.14)',
+    headerBadge: 'Full-Stack Platform · Spring Boot 3 & MySQL',
+    headerTitle: 'Secure Contact Management Architecture',
+    headerSub: 'Java 21 · Spring Security · OAuth 2.0 · Cloudinary CDN',
+    statHero: {
+      value: 'OAuth 2.0',
+      label: 'Dual Social Authentication',
+      sub: 'Unified Google and GitHub OAuth 2.0 social login paired with Spring Security 6 session authorization and BCrypt encryption.',
+      icon: Lock,
+      badge: 'Google & GitHub OAuth',
+    },
+    tileTopRight: {
+      value: 'Cloud CDN',
+      label: 'Cloudinary Image Pipeline',
+      sub: 'Automated cloud asset uploads, dynamic avatar image transformations, and responsive media delivery via Cloudinary CDN.',
+      icon: Cloud,
+      badge: 'Cloudinary API',
+    },
+    tileBottomLeft: {
+      title: 'Dynamic Search & JPA Criteria Engine',
+      sub: 'Multi-criteria dynamic query specifications across Name, Email, and Phone with server-side pagination, sorting, and favorite bookmarking.',
+      icon: Server,
+      tags: ['Spring Data JPA', 'MySQL 8.0', 'Thymeleaf', 'Tailwind CSS'],
+    },
+    tileBottomRight: {
+      value: 'Mailtrap',
+      label: 'Automated Email Verification',
+      sub: 'Transactional email pipeline using Mailtrap and Gmail SMTP for secure user onboarding, email verification tokens, and alerts.',
+      icon: CheckCircle2,
+      badge: 'SMTP Pipeline Live',
+    },
+    footerSpec: 'Java 21 · Spring Boot 3.4 · MySQL · Thymeleaf · Tailwind CSS',
+  },
+};
+
 export const ProjectMockup = ({ project }) => {
-  const [activeTab, setActiveTab] = useState(0);
+  const data = bentoData[project.id] || bentoData.cellumina;
+  const HeroIcon = data.statHero.icon;
+  const TopRightIcon = data.tileTopRight.icon;
+  const BottomLeftIcon = data.tileBottomLeft.icon;
+  const BottomRightIcon = data.tileBottomRight.icon;
 
-  if (project.id === 'cellumina') {
-    return (
-      <div className="w-full h-full min-h-[280px] sm:min-h-[340px] md:h-full bg-gradient-to-br from-[#060B14] via-[#0D1826] to-[#08101E] p-4 sm:p-5 rounded-[24px] sm:rounded-[32px] flex flex-col justify-between relative overflow-hidden border border-frost/15 shadow-2xl">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-accent-cyan/15 rounded-full blur-2xl pointer-events-none" />
-
-        {/* Top iOS App Header */}
-        <div className="relative z-10 flex items-center justify-between pb-2.5 border-b border-frost/10">
-          <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-accent to-accent-cyan flex items-center justify-center shadow-lg shadow-accent/20">
-              <Sparkles className="w-4 h-4 text-white" />
-            </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-frost font-bold tracking-tight text-xs sm:text-sm">Cellumina Simulator</span>
-                <span className="text-[9px] font-medium bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded-full">v2.1 Live</span>
-              </div>
-              <p className="text-secondary text-[10px]">SpriteKit Engine · Apple Foundation Models</p>
-            </div>
-          </div>
-          <div className="hidden sm:flex items-center gap-1.5 text-[11px] text-frost/70 bg-black-100/60 px-2.5 py-0.5 rounded-full border border-frost/10">
-            <Activity className="w-3 h-3 text-emerald-400 animate-pulse" />
-            <span>60 FPS</span>
-          </div>
-        </div>
-
-        {/* Interactive Simulation Stage */}
-        <div className="relative z-10 my-2.5 flex-1 flex flex-col items-center justify-center bg-black-200/60 rounded-xl border border-frost/10 p-3 min-h-[160px]">
-          <div className="relative w-36 h-36 sm:w-44 sm:h-44 flex items-center justify-center">
-            {/* Outer Membrane */}
-            <div className="absolute inset-0 rounded-full border-2 border-dashed border-accent-cyan/60 animate-spin" style={{ animationDuration: '40s' }} />
-            <div className="absolute inset-2 rounded-full border border-accent/40 animate-pulse" />
-            {/* Cytoplasm */}
-            <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-accent/20 via-accent-cyan/15 to-transparent blur-sm" />
-            {/* Nucleus */}
-            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-indigo-600 via-purple-700 to-accent flex flex-col items-center justify-center shadow-lg shadow-purple-500/30 z-10">
-              <span className="text-[10px] font-bold text-white uppercase tracking-wider">Nucleus</span>
-              <span className="text-[8px] text-white/70">DNA / RNA</span>
-            </div>
-
-            {/* Orbiting Organelles */}
-            <div className="absolute top-2 left-6 bg-emerald-500/80 px-2 py-0.5 rounded-full text-[8px] font-semibold text-black shadow-md">
-              Mitochondria
-            </div>
-            <div className="absolute bottom-4 right-6 bg-sky-400/80 px-2 py-0.5 rounded-full text-[8px] font-semibold text-black shadow-md">
-              Ribosome
-            </div>
-          </div>
-
-          <div className="mt-1 text-center">
-            <p className="text-frost text-[11px] font-medium">Interactive Cellular Signaling &amp; Amoeba Physics</p>
-          </div>
-        </div>
-
-        {/* Tab Controls */}
-        <div className="relative z-10 flex items-center justify-between gap-1.5 pt-1">
-          {['Eukaryotic Cell', 'Amoeba Physics', 'Cell Signaling'].map((tab, idx) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(idx)}
-              className={`flex-1 py-1 px-1.5 rounded-lg text-[9px] sm:text-[10px] font-medium transition-all text-center ${
-                activeTab === idx
-                  ? 'bg-accent/20 border border-accent/60 text-frost'
-                  : 'bg-black-100/50 text-secondary hover:text-frost border border-frost/5'
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
-  if (project.id === 'loop') {
-    return (
-      <div className="w-full h-full min-h-[280px] sm:min-h-[340px] md:h-full bg-gradient-to-br from-[#120B1A] via-[#1A1024] to-[#0D0914] p-4 sm:p-5 rounded-[24px] sm:rounded-[32px] flex flex-col justify-between relative overflow-hidden border border-frost/15 shadow-2xl">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-accent/20 rounded-full blur-2xl pointer-events-none" />
-
-        {/* Top iOS App Header */}
-        <div className="relative z-10 flex items-center justify-between pb-2.5 border-b border-frost/10">
-          <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#9B1FD9] to-[#E85D75] flex items-center justify-center shadow-lg shadow-purple-600/30">
-              <Users className="w-4 h-4 text-white" />
-            </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-frost font-bold tracking-tight text-xs sm:text-sm">Loop Workspace</span>
-                <span className="text-[9px] font-medium bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2 py-0.5 rounded-full">TestFlight</span>
-              </div>
-              <p className="text-secondary text-[10px]">Multi-Tenant · SwiftUI &amp; PostgreSQL</p>
-            </div>
-          </div>
-          <span className="text-[11px] text-frost/70 bg-black-100/60 px-2.5 py-0.5 rounded-full border border-frost/10">
-            Galgotias Hub
-          </span>
-        </div>
-
-        {/* Dashboard Cards Grid */}
-        <div className="relative z-10 my-2 grid grid-cols-2 gap-2">
-          <div className="bg-black-200/70 p-2.5 rounded-xl border border-frost/10">
-            <div className="flex items-center justify-between mb-0.5">
-              <span className="text-[9px] text-secondary uppercase font-medium">Active Members</span>
-              <Users className="w-3 h-3 text-accent" />
-            </div>
-            <p className="text-frost text-base sm:text-lg font-bold">1,248</p>
-            <p className="text-[9px] text-emerald-400">+14% this month</p>
-          </div>
-
-          <div className="bg-black-200/70 p-2.5 rounded-xl border border-frost/10">
-            <div className="flex items-center justify-between mb-0.5">
-              <span className="text-[9px] text-secondary uppercase font-medium">Pending Approvals</span>
-              <CheckCircle2 className="w-3 h-3 text-amber-400" />
-            </div>
-            <p className="text-frost text-base sm:text-lg font-bold">7 Requests</p>
-            <p className="text-[9px] text-secondary">3 Events · 4 Budgets</p>
-          </div>
-        </div>
-
-        {/* Live Feed */}
-        <div className="relative z-10 bg-black-200/80 rounded-xl border border-frost/10 p-2.5 flex flex-col gap-1.5">
-          <div className="flex items-center justify-between text-[11px] pb-1 border-b border-frost/5">
-            <span className="text-frost font-semibold text-[10px] uppercase tracking-wider">Upcoming Announcements</span>
-            <span className="text-[9px] text-accent font-medium">View All</span>
-          </div>
-          <div className="flex items-center justify-between text-[10px] p-1.5 rounded-lg bg-tertiary/70 border border-frost/5">
-            <div className="flex items-center gap-1.5">
-              <Calendar className="w-3 h-3 text-accent-cyan" />
-              <span className="text-frost truncate">Annual Hackathon Registration Open</span>
-            </div>
-            <span className="text-[8px] bg-accent/20 text-frost px-1.5 py-0.5 rounded-full shrink-0">Pinned</span>
-          </div>
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="relative z-10 pt-1.5 flex items-center justify-between text-[11px] text-secondary">
-          <span>Multi-tenant organization architecture</span>
-          <span className="text-accent font-medium flex items-center gap-1">
-            TestFlight Beta <ArrowUpRight className="w-3 h-3" />
-          </span>
-        </div>
-      </div>
-    );
-  }
-
-  if (project.id === 'connexus') {
-    return (
-      <div className="w-full h-full min-h-[280px] sm:min-h-[340px] md:h-full bg-gradient-to-br from-[#1A1207] via-[#24170A] to-[#120B04] p-4 sm:p-5 rounded-[24px] sm:rounded-[32px] flex flex-col justify-between relative overflow-hidden border border-amber-500/25 shadow-2xl">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/15 rounded-full blur-2xl pointer-events-none" />
-
-        {/* Top App Header */}
-        <div className="relative z-10 flex items-center justify-between pb-2.5 border-b border-frost/10">
-          <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-600 flex items-center justify-center shadow-lg shadow-amber-500/30">
-              <UserCheck className="w-4 h-4 text-white" />
-            </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-frost font-bold tracking-tight text-xs sm:text-sm">ConneXus Contact Hub</span>
-                <span className="text-[9px] font-medium bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded-full">Spring Boot 3</span>
-              </div>
-              <p className="text-secondary text-[10px]">OAuth 2.0 · MySQL &amp; Cloudinary</p>
-            </div>
-          </div>
-          <button
-            onClick={() => setActiveTab(activeTab === 0 ? 1 : 0)}
-            className="text-[10px] text-amber-300 bg-amber-950/70 border border-amber-500/30 px-2.5 py-1 rounded-full flex items-center gap-1 hover:bg-amber-900/60 transition-colors cursor-pointer"
-          >
-            {activeTab === 0 ? 'View Screenshot' : 'Live UI'}
-          </button>
-        </div>
-
-        {/* Body: Toggle between Live Interactive Mockup and Production Screenshot */}
-        {activeTab === 1 ? (
-          <div className="relative z-10 my-2.5 flex-1 rounded-xl overflow-hidden border border-frost/15 bg-black-200/80 min-h-[160px] flex items-center justify-center">
-            <img
-              src="/assets/connexus-contacts.png"
-              alt="Connexus Contacts Dashboard"
-              className="w-full h-full object-cover object-top rounded-xl"
-            />
-          </div>
-        ) : (
-          <div className="relative z-10 my-2 flex-1 flex flex-col justify-between gap-1.5">
-            {/* Search Bar */}
-            <div className="flex items-center gap-2 bg-black-200/80 rounded-xl border border-frost/10 px-3 py-1.5">
-              <Search className="w-3.5 h-3.5 text-secondary" />
-              <span className="text-secondary text-[11px] font-light truncate">Search contacts by name, phone or email...</span>
-              <span className="ml-auto text-[9px] bg-primary/60 border border-frost/10 px-2 py-0.5 rounded text-frost/70 shrink-0">All (24)</span>
-            </div>
-
-            {/* Contact Rows */}
-            <div className="flex flex-col gap-1.5">
-              {[
-                { name: 'Sarah Jenkins', role: 'Product Lead', email: 'sarah.j@techcorp.io', phone: '+1 (555) 382-9012', favorite: true },
-                { name: 'Alex Rivera', role: 'Design Systems', email: 'alex.r@designhub.com', phone: '+1 (555) 724-1189', favorite: true },
-                { name: 'Devon Vance', role: 'Backend Engineer', email: 'devon@cloudsystems.dev', phone: '+1 (555) 901-4432', favorite: false },
-              ].map((c) => (
-                <div
-                  key={c.name}
-                  className="bg-black-200/70 hover:bg-black-200 border border-frost/10 hover:border-amber-500/40 rounded-xl p-2 flex items-center justify-between transition-all"
-                >
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-amber-600 to-orange-500 flex items-center justify-center text-[10px] font-bold text-white shrink-0">
-                      {c.name.split(' ').map((n) => n[0]).join('')}
-                    </div>
-                    <div className="min-w-0">
-                      <div className="flex items-center gap-1.5">
-                        <p className="text-frost text-xs font-semibold truncate leading-none">{c.name}</p>
-                        {c.favorite && <Star className="w-3 h-3 text-amber-400 fill-amber-400 shrink-0" />}
-                      </div>
-                      <p className="text-secondary text-[10px] truncate mt-0.5">{c.email} · {c.phone}</p>
-                    </div>
-                  </div>
-                  <span className="text-[9px] px-2 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 shrink-0">
-                    {c.role}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Footer Details */}
-        <div className="relative z-10 pt-1.5 border-t border-frost/10 flex items-center justify-between text-[10px] text-secondary">
-          <div className="flex items-center gap-2">
-            <span className="flex items-center gap-1 text-emerald-400">
-              <ShieldCheck className="w-3 h-3" />
-              OAuth 2.0 (Google &amp; GitHub)
-            </span>
-            <span>·</span>
-            <span className="flex items-center gap-1 text-sky-400">
-              <Cloud className="w-3 h-3" />
-              Cloudinary CDN
-            </span>
-          </div>
-          <span className="text-amber-400 font-mono text-[9px]">MySQL 8.0</span>
-        </div>
-      </div>
-    );
-  }
-
-  // FleetOS
   return (
-    <div className="w-full h-full min-h-[280px] sm:min-h-[340px] md:h-full bg-gradient-to-br from-[#061511] via-[#0A1F19] to-[#07130F] p-4 sm:p-5 rounded-[24px] sm:rounded-[32px] flex flex-col justify-between relative overflow-hidden border border-frost/15 shadow-2xl">
-      <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/15 rounded-full blur-2xl pointer-events-none" />
+    <div className="w-full h-full min-h-[360px] md:min-h-[420px] bg-black-200/90 rounded-[24px] sm:rounded-[32px] p-4 sm:p-5 flex flex-col justify-between border border-frost/15 shadow-2xl relative overflow-hidden">
+      {/* Background radial glow */}
+      <div
+        className="absolute top-0 right-0 w-80 h-80 rounded-full blur-3xl pointer-events-none"
+        style={{ background: data.glowBg }}
+      />
 
-      {/* Top iOS App Header */}
-      <div className="relative z-10 flex items-center justify-between pb-2.5 border-b border-frost/10">
-        <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center shadow-lg shadow-emerald-600/30">
-            <Truck className="w-4 h-4 text-white" />
+      {/* Bento Header */}
+      <div className="relative z-10 flex items-center justify-between pb-3 border-b border-frost/10">
+        <div className="flex items-center gap-2.5 min-w-0">
+          <div
+            className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 shadow-md"
+            style={{ background: `${data.accentColor}25`, border: `1px solid ${data.accentColor}50` }}
+          >
+            <Code2 className="w-4 h-4" style={{ color: data.accentColor }} />
           </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-frost font-bold tracking-tight text-xs sm:text-sm">FleetOS Enterprise</span>
-              <span className="text-[9px] font-medium bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-full">Infosys MDC</span>
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-2">
+              <h4 className="text-frost font-bold tracking-tight text-xs sm:text-sm">
+                {data.headerTitle}
+              </h4>
+              <span
+                className="text-[9px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wider"
+                style={{
+                  background: `${data.accentColor}20`,
+                  color: data.accentColor,
+                  border: `1px solid ${data.accentColor}40`,
+                }}
+              >
+                {data.headerBadge}
+              </span>
             </div>
-            <p className="text-secondary text-[10px]">Role-Based · Managers, Drivers &amp; Maintenance</p>
+            <p className="text-secondary text-[10px] font-light mt-0.5 truncate">
+              {data.headerSub}
+            </p>
           </div>
         </div>
-        <span className="text-[10px] text-emerald-400 bg-emerald-950/60 border border-emerald-500/20 px-2.5 py-0.5 rounded-full flex items-center gap-1">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-          Live Telematics
+      </div>
+
+      {/* Bento 4-Tile Grid */}
+      <div className="relative z-10 my-3 grid grid-cols-1 sm:grid-cols-12 gap-2.5 flex-1">
+        {/* Tile 1: Hero Metric (7 cols) */}
+        <div className="sm:col-span-7 bg-primary/70 backdrop-blur-md rounded-2xl border border-frost/10 p-3 sm:p-3.5 flex flex-col justify-between hover:border-frost/25 transition-colors">
+          <div className="flex items-center justify-between">
+            <span
+              className="font-black tracking-tight leading-none text-xl sm:text-2xl"
+              style={{ color: data.accentColor }}
+            >
+              {data.statHero.value}
+            </span>
+            <div
+              className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0"
+              style={{ background: `${data.accentColor}18` }}
+            >
+              <HeroIcon className="w-3.5 h-3.5" style={{ color: data.accentColor }} />
+            </div>
+          </div>
+          <div className="mt-2">
+            <h5 className="text-frost font-bold text-xs uppercase tracking-wide">
+              {data.statHero.label}
+            </h5>
+            <p className="text-secondary text-[11px] font-light leading-snug mt-1">
+              {data.statHero.sub}
+            </p>
+          </div>
+          <div className="mt-2.5 pt-2 border-t border-frost/10 flex items-center justify-between">
+            <span className="text-[9px] uppercase tracking-wider text-secondary font-mono">
+              Architecture Pillar
+            </span>
+            <span
+              className="text-[9px] font-medium px-2 py-0.5 rounded-full"
+              style={{ background: `${data.accentColor}15`, color: data.accentColor }}
+            >
+              {data.statHero.badge}
+            </span>
+          </div>
+        </div>
+
+        {/* Tile 2: Secondary Metric / Performance (5 cols) */}
+        <div className="sm:col-span-5 bg-primary/70 backdrop-blur-md rounded-2xl border border-frost/10 p-3 sm:p-3.5 flex flex-col justify-between hover:border-frost/25 transition-colors">
+          <div className="flex items-center justify-between">
+            <span className="font-bold tracking-tight text-frost text-base sm:text-lg">
+              {data.tileTopRight.value}
+            </span>
+            <div
+              className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0"
+              style={{ background: `${data.accentColor}18` }}
+            >
+              <TopRightIcon className="w-3.5 h-3.5" style={{ color: data.accentColor }} />
+            </div>
+          </div>
+          <div className="mt-2">
+            <h5 className="text-frost font-bold text-xs uppercase tracking-wide">
+              {data.tileTopRight.label}
+            </h5>
+            <p className="text-secondary text-[11px] font-light leading-snug mt-1">
+              {data.tileTopRight.sub}
+            </p>
+          </div>
+          <div className="mt-2.5 pt-2 border-t border-frost/10 flex items-center justify-end">
+            <span
+              className="text-[9px] font-medium px-2 py-0.5 rounded-full"
+              style={{ background: `${data.accentColor}15`, color: data.accentColor }}
+            >
+              {data.tileTopRight.badge}
+            </span>
+          </div>
+        </div>
+
+        {/* Tile 3: Core Pipeline & Tags (7 cols) */}
+        <div className="sm:col-span-7 bg-primary/70 backdrop-blur-md rounded-2xl border border-frost/10 p-3 sm:p-3.5 flex flex-col justify-between hover:border-frost/25 transition-colors">
+          <div className="flex items-center gap-2">
+            <BottomLeftIcon className="w-3.5 h-3.5 shrink-0" style={{ color: data.accentColor }} />
+            <h5 className="text-frost font-bold text-xs uppercase tracking-wide">
+              {data.tileBottomLeft.title}
+            </h5>
+          </div>
+          <p className="text-secondary text-[11px] font-light leading-snug my-2">
+            {data.tileBottomLeft.sub}
+          </p>
+          <div className="flex flex-wrap gap-1.5 pt-1.5 border-t border-frost/10">
+            {data.tileBottomLeft.tags.map((t) => (
+              <span
+                key={t}
+                className="text-[9px] rounded-md px-2 py-0.5 bg-black-100 text-frost/80 border border-frost/10"
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Tile 4: Verification & Live Status (5 cols) */}
+        <div className="sm:col-span-5 bg-primary/70 backdrop-blur-md rounded-2xl border border-frost/10 p-3 sm:p-3.5 flex flex-col justify-between hover:border-frost/25 transition-colors">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: data.accentColor }} />
+              <span className="text-[10px] font-bold uppercase tracking-wider" style={{ color: data.accentColor }}>
+                {data.tileBottomRight.value}
+              </span>
+            </div>
+            <BottomRightIcon className="w-3.5 h-3.5 shrink-0" style={{ color: data.accentColor }} />
+          </div>
+          <div className="my-1.5">
+            <h5 className="text-frost font-bold text-xs uppercase tracking-wide">
+              {data.tileBottomRight.label}
+            </h5>
+            <p className="text-secondary text-[10px] font-light leading-snug mt-1">
+              {data.tileBottomRight.sub}
+            </p>
+          </div>
+          <div className="pt-2 border-t border-frost/10 flex items-center justify-end">
+            <span className="text-[9px] text-frost/70 font-mono">
+              {data.tileBottomRight.badge}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Bento Bottom Spec Strip */}
+      <div className="relative z-10 pt-2.5 border-t border-frost/10 flex items-center justify-between text-[10px] text-secondary">
+        <span className="font-mono text-frost/60 truncate">
+          {data.footerSpec}
         </span>
-      </div>
-
-      {/* Telematics Metrics */}
-      <div className="relative z-10 my-2 grid grid-cols-3 gap-1.5">
-        <div className="bg-black-200/70 p-2 rounded-xl border border-frost/10 text-center">
-          <p className="text-[9px] text-secondary uppercase font-medium">Active</p>
-          <p className="text-frost text-sm sm:text-base font-bold">48/52</p>
-        </div>
-        <div className="bg-black-200/70 p-2 rounded-xl border border-frost/10 text-center">
-          <p className="text-[9px] text-secondary uppercase font-medium">On-Road</p>
-          <p className="text-frost text-sm sm:text-base font-bold">34 Trips</p>
-        </div>
-        <div className="bg-black-200/70 p-2 rounded-xl border border-frost/10 text-center">
-          <p className="text-[9px] text-secondary uppercase font-medium">Service Due</p>
-          <p className="text-amber-400 text-sm sm:text-base font-bold">4 Units</p>
-        </div>
-      </div>
-
-      {/* Dispatch item */}
-      <div className="relative z-10 bg-black-200/80 rounded-xl border border-frost/10 p-2.5 flex items-center justify-between text-[10px]">
-        <div className="flex items-center gap-2">
-          <Navigation className="w-3.5 h-3.5 text-emerald-400" />
-          <div>
-            <p className="text-frost font-medium leading-none">Vehicle #FL-802 · Bangalore → Mysore</p>
-            <p className="text-secondary text-[9px] mt-0.5">Driver: R. Kumar · ETA: 42 mins</p>
-          </div>
-        </div>
-        <span className="text-[8px] bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded-full">On Time</span>
-      </div>
-
-      {/* Footer Details */}
-      <div className="relative z-10 pt-1.5 flex items-center justify-between text-[11px] text-secondary">
-        <span>Infosys Mysore Development Centre</span>
-        <span className="text-emerald-400 font-medium">Agile / Jira Sprint</span>
+        <span className="text-frost/80 font-medium shrink-0 ml-2">
+          Verified Architecture
+        </span>
       </div>
     </div>
   );
