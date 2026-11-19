@@ -1,106 +1,137 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import ScrollRevealText from './ScrollRevealText';
-import { Award, Code2, Layers, Cpu, Sparkles } from 'lucide-react';
+
+const floatingChips = [
+  {
+    name: 'SwiftUI',
+    vendor: 'Apple Developer',
+    color: '#4E8CF9',
+    rot: -6,
+    floatDelay: 0,
+    className: 'top-[8%] left-[2%] md:left-[6%]',
+    delay: 0.1,
+    x: -60,
+  },
+  {
+    name: 'WWDC26 Winner',
+    vendor: 'Apple Park, Cupertino',
+    color: '#B600A8',
+    rot: 5,
+    floatDelay: 1.2,
+    className: 'top-[10%] right-[2%] md:right-[6%]',
+    delay: 0.15,
+    x: 60,
+  },
+  {
+    name: 'SpriteKit',
+    vendor: 'Simulation Engine',
+    color: '#10A37F',
+    rot: 4,
+    floatDelay: 2.1,
+    className: 'bottom-[12%] left-[3%] md:left-[8%]',
+    delay: 0.25,
+    x: -60,
+  },
+  {
+    name: 'Foundation Models',
+    vendor: 'Apple Intelligence',
+    color: '#E85D75',
+    rot: -5,
+    floatDelay: 0.7,
+    className: 'bottom-[10%] right-[3%] md:right-[8%]',
+    delay: 0.3,
+    x: 60,
+  },
+];
+
+const FloatingChip = ({ item }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: item.x }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.9, delay: item.delay }}
+      className={`absolute hidden sm:block pointer-events-none select-none z-10 ${item.className}`}
+    >
+      <div
+        className="chip-float rounded-2xl border border-frost/15 bg-black-100/85 backdrop-blur-md px-5 py-3 md:px-6 md:py-4 transition-transform"
+        style={{
+          '--chip-rot': `${item.rot}deg`,
+          animationDelay: `${item.floatDelay}s`,
+          boxShadow: `0 0 38px ${item.color}2E`,
+        }}
+      >
+        <div className="flex items-center gap-2">
+          <span
+            className="inline-block w-2 h-2 rounded-full shadow-sm"
+            style={{ background: item.color }}
+          />
+          <span className="text-frost/50 text-[9px] md:text-[10px] uppercase tracking-[0.25em] font-light">
+            {item.vendor}
+          </span>
+        </div>
+        <p className="text-frost font-semibold uppercase tracking-wide text-sm md:text-base mt-1">
+          {item.name}
+        </p>
+      </div>
+    </motion.div>
+  );
+};
 
 export const AboutSection = () => {
   const storyText = 
     "I am an iOS Developer and Apple Swift Student Challenge 2026 Winner. Being selected by Apple and attending WWDC26 at Apple Park in Cupertino transformed how I approach software design: obsessive attention to frame-rate performance, fluid haptics, and thoughtful spatial aesthetics. Whether building Cellumina to simulate cell biology and endocrine signaling at 60 frames per second using SpriteKit, or architecting Loop and FleetOS for multi-tenant enterprise scale, I engineer mobile apps that feel like magic in the user's hands.";
 
-  const pillars = [
-    {
-      icon: Award,
-      title: "Apple Park & WWDC26",
-      desc: "Distinguished winner of the Swift Student Challenge 2026. Attended WWDC in person at Cupertino, learning directly from Apple platform architects.",
-      accent: "text-accent",
-    },
-    {
-      icon: Code2,
-      title: "SwiftUI & SpriteKit",
-      desc: "Specialized in declarative Swift, reactive state management, custom animation drivers, and high-performance SpriteKit canvas simulations.",
-      accent: "text-accent-cyan",
-    },
-    {
-      icon: Layers,
-      title: "Enterprise Architecture",
-      desc: "Hands-on experience at Infosys Mysore Development Centre designing multi-role workflows, telematics dashboards, and agile sprint collaboration.",
-      accent: "text-emerald-400",
-    },
-    {
-      icon: Cpu,
-      title: "On-Device Intelligence",
-      desc: "Integrating Apple Foundation Models and local ML pipelines for contextual, responsive mobile applications that protect user privacy.",
-      accent: "text-purple-400",
-    },
-  ];
-
   return (
-    <section id="about" className="relative bg-primary px-5 sm:px-8 md:px-12 py-24 sm:py-32 scroll-mt-[90px] overflow-hidden">
-      {/* Hardware-accelerated radial glow (no heavy blur filter) */}
-      <div
-        className="pointer-events-none absolute top-1/4 left-1/2 -translate-x-1/2 w-[650px] h-[650px] opacity-40"
-        style={{
-          background:
-            'radial-gradient(circle, rgba(182, 0, 168, 0.12) 0%, rgba(78, 140, 249, 0.05) 45%, transparent 70%)',
-        }}
-      />
+    <section
+      id="about"
+      className="relative bg-primary min-h-screen flex items-center justify-center px-5 sm:px-8 md:px-10 py-24 sm:py-32 scroll-mt-[90px] overflow-hidden"
+      style={{ overflowX: 'clip' }}
+    >
+      {/* 4 Floating Glassmorphic Chips (SwiftUI, WWDC26, SpriteKit, Foundation Models) */}
+      {floatingChips.map((chip) => (
+        <FloatingChip key={chip.name} item={chip} />
+      ))}
 
-      <div className="max-w-6xl mx-auto flex flex-col items-center">
-        {/* Section Headings */}
-        <div className="text-center mb-12 sm:mb-16">
-          <p className="text-secondary uppercase tracking-[0.3em] text-[11px] sm:text-xs font-light mb-3">
-            Who I am &amp; Engineering Philosophy
-          </p>
-          <h2
-            className="hero-heading font-black uppercase leading-none tracking-tight"
-            style={{ fontSize: 'clamp(3rem, 11vw, 150px)' }}
-          >
-            About
-          </h2>
-        </div>
+      {/* Main Centered Content */}
+      <div className="flex flex-col items-center gap-10 sm:gap-14 md:gap-16 max-w-5xl z-10 text-center">
+        {/* Section Heading matching 5ach1n */}
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="hero-heading font-black uppercase leading-none tracking-tight text-center"
+          style={{ fontSize: 'clamp(3rem, 12vw, 150px)' }}
+        >
+          About me
+        </motion.h2>
 
-        {/* Scroll Reveal Illuminated Bio (Silky smooth 120 FPS RAF) */}
-        <div className="max-w-4xl text-center mb-16 sm:mb-24 px-2">
+        {/* Illuminated Scroll Text (No ghosting, no overlap, silky 120 FPS) */}
+        <div className="max-w-[660px] mx-auto px-4">
           <ScrollRevealText
             text={storyText}
-            className="font-light leading-relaxed sm:leading-loose text-frost"
-            style={{ fontSize: 'clamp(1.15rem, 2.3vw, 1.95rem)' }}
+            className="text-frost font-medium text-center leading-relaxed"
+            style={{ fontSize: 'clamp(1.05rem, 1.8vw, 1.35rem)' }}
           />
         </div>
 
-        {/* Philosophy Pillars Grid */}
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {pillars.map((pillar, idx) => {
-            const Icon = pillar.icon;
-            return (
-              <motion.div
-                key={pillar.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="rounded-3xl border border-frost/15 bg-black-100 p-6 flex flex-col justify-between hover:border-frost/40 transition-colors shadow-lg"
-              >
-                <div>
-                  <div className="w-12 h-12 rounded-2xl bg-tertiary border border-frost/10 flex items-center justify-center mb-4">
-                    <Icon className={`w-6 h-6 ${pillar.accent}`} />
-                  </div>
-                  <h3 className="text-frost font-bold uppercase tracking-wide text-base sm:text-lg mb-2">
-                    {pillar.title}
-                  </h3>
-                  <p className="text-secondary text-xs sm:text-sm font-light leading-relaxed">
-                    {pillar.desc}
-                  </p>
-                </div>
-
-                <div className="pt-4 mt-6 border-t border-frost/10 flex items-center justify-between text-[10px] text-frost/40 uppercase tracking-widest">
-                  <span>Pillar 0{idx + 1}</span>
-                  <Sparkles className="w-3 h-3 text-frost/30" />
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
+        {/* Contact Me Button matching 5ach1n */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mt-2 sm:mt-4"
+        >
+          <a
+            href="#contact"
+            className="contact-gradient inline-block rounded-full text-white font-medium uppercase tracking-widest px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base transition-transform duration-300 hover:scale-[1.04] active:scale-[0.98]"
+          >
+            Contact Me
+          </a>
+        </motion.div>
       </div>
     </section>
   );
