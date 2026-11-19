@@ -36,8 +36,14 @@ export const AboutSection = () => {
 
   return (
     <section id="about" className="relative bg-primary px-5 sm:px-8 md:px-12 py-24 sm:py-32 scroll-mt-[90px] overflow-hidden">
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[140px] pointer-events-none" />
+      {/* Hardware-accelerated radial glow (no heavy blur filter) */}
+      <div
+        className="pointer-events-none absolute top-1/4 left-1/2 -translate-x-1/2 w-[650px] h-[650px] opacity-40"
+        style={{
+          background:
+            'radial-gradient(circle, rgba(182, 0, 168, 0.12) 0%, rgba(78, 140, 249, 0.05) 45%, transparent 70%)',
+        }}
+      />
 
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         {/* Section Headings */}
@@ -53,7 +59,7 @@ export const AboutSection = () => {
           </h2>
         </div>
 
-        {/* Scroll Reveal Illuminated Bio */}
+        {/* Scroll Reveal Illuminated Bio (Silky smooth 120 FPS RAF) */}
         <div className="max-w-4xl text-center mb-16 sm:mb-24 px-2">
           <ScrollRevealText
             text={storyText}

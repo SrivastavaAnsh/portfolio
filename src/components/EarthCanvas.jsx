@@ -4,11 +4,13 @@ import * as THREE from 'three';
 const EarthCanvas = () => {
   const containerRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
-  const [activePin, setActivePin] = useState("noida");
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+
+    let isVisible = false;
+    let animationFrameId;
 
     // Scene, Camera, Renderer
     const scene = new THREE.Scene();
@@ -24,7 +26,7 @@ const EarthCanvas = () => {
       powerPreference: "high-performance",
     });
     renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.2;
     container.innerHTML = "";
@@ -34,14 +36,14 @@ const EarthCanvas = () => {
     const earthGroup = new THREE.Group();
     scene.add(earthGroup);
 
-    // --- PROCEDURAL EARTH TEXTURE CANVAS ---
+    // Procedural Earth Texture
     const createEarthTexture = () => {
       const canvas = document.createElement('canvas');
-      canvas.width = 2048;
-      canvas.height = 1024;
+      canvas.width = 1024;
+      canvas.height = 512;
       const ctx = canvas.getContext('2d');
 
-      // Deep ocean gradient
+      // Ocean gradient
       const oceanGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
       oceanGrad.addColorStop(0, '#060B12');
       oceanGrad.addColorStop(0.5, '#0B1522');
@@ -52,13 +54,13 @@ const EarthCanvas = () => {
       // Lat-Long Grid lines
       ctx.strokeStyle = 'rgba(78, 140, 249, 0.08)';
       ctx.lineWidth = 1;
-      for (let lat = 0; lat <= canvas.height; lat += canvas.height / 18) {
+      for (let lat = 0; lat <= canvas.height; lat += canvas.height / 12) {
         ctx.beginPath();
         ctx.moveTo(0, lat);
         ctx.lineTo(canvas.width, lat);
         ctx.stroke();
       }
-      for (let lon = 0; lon <= canvas.width; lon += canvas.width / 36) {
+      for (let lon = 0; lon <= canvas.width; lon += canvas.width / 24) {
         ctx.beginPath();
         ctx.moveTo(lon, 0);
         ctx.lineTo(lon, canvas.height);
@@ -83,8 +85,6 @@ const EarthCanvas = () => {
         ctx.stroke();
       };
 
-      // Stylized landmass polygons
-      // Eurasia & India
       drawLandmass([
         [10, 60], [30, 70], [60, 72], [100, 75], [140, 70], [170, 65],
         [140, 40], [120, 25], [105, 10], [80, 8], [75, 20], [70, 25],
@@ -92,32 +92,28 @@ const EarthCanvas = () => {
         [45, 35], [35, 30], [25, 38], [15, 45], [5, 52]
       ]);
 
-      // Africa
       drawLandmass([
         [-15, 30], [10, 36], [35, 30], [50, 12], [40, -10], [30, -32],
         [18, -35], [10, -15], [0, 5], [-18, 15]
       ]);
 
-      // North America
       drawLandmass([
         [-165, 65], [-130, 70], [-80, 72], [-60, 50], [-75, 35], [-80, 25],
         [-95, 20], [-105, 22], [-115, 32], [-124, 38], [-125, 50], [-150, 58]
       ]);
 
-      // South America
       drawLandmass([
         [-80, 10], [-50, -5], [-35, -8], [-40, -22], [-55, -45], [-68, -55],
         [-75, -45], [-72, -20], [-80, 0]
       ]);
 
-      // Australia
       drawLandmass([
         [115, -15], [135, -12], [150, -22], [148, -38], [130, -35], [115, -30]
       ]);
 
-      // Add city lights / bioluminescence dots
+      // City light points
       ctx.fillStyle = '#4E8CF9';
-      for (let i = 0; i < 400; i++) {
+      for (let i = 0; i < 250; i++) {
         const cx = Math.random() * canvas.width;
         const cy = Math.random() * canvas.height;
         ctx.beginPath();
@@ -125,20 +121,20 @@ const EarthCanvas = () => {
         ctx.fill();
       }
 
-      // Special highlight for India / Delhi-NCR
+      // Greater Noida / Delhi-NCR marker
       const indX = ((77.5 + 180) / 360) * canvas.width;
       const indY = ((90 - 28.5) / 180) * canvas.height;
       ctx.fillStyle = '#B600A8';
       ctx.beginPath();
-      ctx.arc(indX, indY, 6, 0, Math.PI * 2);
+      ctx.arc(indX, indY, 5, 0, Math.PI * 2);
       ctx.fill();
 
-      // Cupertino, CA highlight
+      // Cupertino, CA marker
       const cupX = ((-122 + 180) / 360) * canvas.width;
       const cupY = ((90 - 37.3) / 180) * canvas.height;
       ctx.fillStyle = '#4E8CF9';
       ctx.beginPath();
-      ctx.arc(cupX, cupY, 6, 0, Math.PI * 2);
+      ctx.arc(cupX, cupY, 5, 0, Math.PI * 2);
       ctx.fill();
 
       return new THREE.CanvasTexture(canvas);
@@ -146,19 +142,18 @@ const EarthCanvas = () => {
 
     const earthTexture = createEarthTexture();
 
-    // Earth Sphere Mesh
-    const sphereGeometry = new THREE.SphereGeometry(2, 64, 64);
+    // Sphere Mesh
+    const sphereGeometry = new THREE.SphereGeometry(2, 48, 48);
     const sphereMaterial = new THREE.MeshStandardMaterial({
       map: earthTexture,
       roughness: 0.7,
       metalness: 0.15,
-      bumpScale: 0.05,
     });
     const earthMesh = new THREE.Mesh(sphereGeometry, sphereMaterial);
     earthGroup.add(earthMesh);
 
-    // Atmospheric Glow Sphere
-    const atmosphereGeometry = new THREE.SphereGeometry(2.08, 64, 64);
+    // Atmospheric Glow
+    const atmosphereGeometry = new THREE.SphereGeometry(2.08, 48, 48);
     const atmosphereMaterial = new THREE.ShaderMaterial({
       vertexShader: `
         varying vec3 vNormal;
@@ -181,32 +176,8 @@ const EarthCanvas = () => {
     const atmosphereMesh = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
     earthGroup.add(atmosphereMesh);
 
-    // Outer Aura Glow
-    const outerAuraGeo = new THREE.SphereGeometry(2.2, 48, 48);
-    const outerAuraMat = new THREE.ShaderMaterial({
-      vertexShader: `
-        varying vec3 vNormal;
-        void main() {
-          vNormal = normalize(normalMatrix * normal);
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-        }
-      `,
-      fragmentShader: `
-        varying vec3 vNormal;
-        void main() {
-          float intensity = pow(0.5 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 3.0);
-          gl_FragColor = vec4(0.71, 0.0, 0.66, 1.0) * intensity * 0.7;
-        }
-      `,
-      blending: THREE.AdditiveBlending,
-      side: THREE.BackSide,
-      transparent: true,
-    });
-    const outerAuraMesh = new THREE.Mesh(outerAuraGeo, outerAuraMat);
-    earthGroup.add(outerAuraMesh);
-
-    // Orbital Ring with particle beacon
-    const ringGeo = new THREE.RingGeometry(2.6, 2.64, 96);
+    // Orbital Ring
+    const ringGeo = new THREE.RingGeometry(2.6, 2.64, 64);
     const ringMat = new THREE.MeshBasicMaterial({
       color: 0x4E8CF9,
       side: THREE.DoubleSide,
@@ -218,14 +189,14 @@ const EarthCanvas = () => {
     ringMesh.rotation.y = Math.PI / 6;
     earthGroup.add(ringMesh);
 
-    // Orbiting Satellite Beacon
-    const satGeo = new THREE.SphereGeometry(0.06, 16, 16);
+    // Satellite
+    const satGeo = new THREE.SphereGeometry(0.06, 12, 12);
     const satMat = new THREE.MeshBasicMaterial({ color: 0xD7E2EA });
     const satellite = new THREE.Mesh(satGeo, satMat);
     earthGroup.add(satellite);
 
     // Starfield Background
-    const starsCount = 700;
+    const starsCount = 400;
     const starGeometry = new THREE.BufferGeometry();
     const starPositions = new Float32Array(starsCount * 3);
     const starColors = new Float32Array(starsCount * 3);
@@ -238,7 +209,7 @@ const EarthCanvas = () => {
     ];
 
     for (let i = 0; i < starsCount; i++) {
-      const r = 18 + Math.random() * 40;
+      const r = 18 + Math.random() * 35;
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.acos(2 * Math.random() - 1);
 
@@ -276,11 +247,7 @@ const EarthCanvas = () => {
     purpleBackLight.position.set(5, -3, -4);
     scene.add(purpleBackLight);
 
-    const cyanRimLight = new THREE.PointLight(0x4e8cf9, 2.0, 15);
-    cyanRimLight.position.set(-2, 3, 3);
-    scene.add(cyanRimLight);
-
-    // --- INTERACTIVE DRAGGING / ORBIT LOGIC ---
+    // Interactive Dragging
     let isDragging = false;
     let prevMouseX = 0;
     let prevMouseY = 0;
@@ -329,7 +296,6 @@ const EarthCanvas = () => {
     window.addEventListener('mouseup', onPointerUp);
     window.addEventListener('touchend', onPointerUp);
 
-    // Resize Handler
     const handleResize = () => {
       if (!container) return;
       const newW = container.clientWidth;
@@ -340,38 +306,46 @@ const EarthCanvas = () => {
     };
     window.addEventListener('resize', handleResize);
 
-    // Animation Loop
-    let animationFrameId;
+    // IntersectionObserver to ONLY render when in viewport
     let satAngle = 0;
-
     const animate = () => {
+      if (!isVisible) return;
       animationFrameId = requestAnimationFrame(animate);
 
       if (autoRotate && !isDragging) {
         earthGroup.rotation.y += 0.0035;
       } else if (!isDragging) {
-        // Inertia damping
         earthGroup.rotation.y += rotVelocityY;
         earthGroup.rotation.x += rotVelocityX;
         rotVelocityY *= 0.95;
         rotVelocityX *= 0.95;
       }
 
-      // Satellite orbit
       satAngle += 0.02;
       satellite.position.x = Math.cos(satAngle) * 2.62 * Math.cos(Math.PI / 6);
       satellite.position.z = Math.sin(satAngle) * 2.62;
       satellite.position.y = Math.cos(satAngle) * 2.62 * Math.sin(Math.PI / 6);
 
-      // Starfield subtle rotation
       starField.rotation.y += 0.0003;
-
       renderer.render(scene, camera);
     };
 
-    animate();
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible) {
+          cancelAnimationFrame(animationFrameId);
+          animate();
+        } else {
+          cancelAnimationFrame(animationFrameId);
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    observer.observe(container);
 
     return () => {
+      observer.disconnect();
       cancelAnimationFrame(animationFrameId);
       domElement.removeEventListener('mousedown', onPointerDown);
       domElement.removeEventListener('touchstart', onPointerDown);
@@ -396,7 +370,6 @@ const EarthCanvas = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* 3D WebGL Canvas */}
       <div ref={containerRef} className="w-full h-full" />
 
       {/* Floating Coordinates & Status Overlay */}
