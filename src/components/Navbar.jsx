@@ -75,8 +75,8 @@ export const Navbar = () => {
           {/* Clean Outline Pill Resume Download Button */}
           <li>
             <a
-              href="/Ansh_Srivastava_Resume.pdf"
-              download="Ansh_Srivastava_Resume.pdf"
+              href="/Ansh_Srivastava.pdf"
+              download="Ansh_Srivastava.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full border border-frost/50 text-frost text-xs md:text-sm font-medium uppercase tracking-widest px-5 py-2 hover:bg-frost/10 transition-colors duration-300 inline-block"
@@ -116,8 +116,8 @@ export const Navbar = () => {
               ))}
               <li className="pt-2 border-t border-frost/10 w-full">
                 <a
-                  href="/Ansh_Srivastava_Resume.pdf"
-                  download="Ansh_Srivastava_Resume.pdf"
+                  href="/Ansh_Srivastava.pdf"
+                  download="Ansh_Srivastava.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMobileMenuOpen(false)}

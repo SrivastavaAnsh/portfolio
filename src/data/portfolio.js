@@ -9,7 +9,7 @@ export const personalInfo = {
   email: "srivastavaansh3456@gmail.com",
   linkedin: "https://www.linkedin.com/in/ansh-srivastava-68004b2a6",
   github: "https://github.com/SrivastavaAnsh",
-  resumeUrl: "/Ansh_Srivastava_Resume.pdf",
+  resumeUrl: "/Ansh_Srivastava.pdf",
   statusBadge: "Open to Full-Time & Internships · Remote / Hybrid · iOS · Android · Design",
 };
 

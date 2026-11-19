@@ -49,7 +49,7 @@ export const ContactSection = () => {
     },
     {
       name: 'Resume (PDF)',
-      display: 'Ansh_Srivastava_Resume.pdf',
+      display: 'Ansh_Srivastava.pdf',
       link: personalInfo.resumeUrl,
       download: true,
       iconType: 'resume',
@@ -137,7 +137,7 @@ export const ContactSection = () => {
                   <a
                     key={item.name}
                     href={item.link}
-                    download={item.download ? 'Ansh_Srivastava_Resume.pdf' : undefined}
+                    download={item.download ? 'Ansh_Srivastava.pdf' : undefined}
                     target={item.link.startsWith('http') || item.download ? '_blank' : '_self'}
                     rel="noopener noreferrer"
                     className="flex items-center justify-between gap-4 bg-tertiary border border-frost/10 rounded-2xl p-3.5 sm:p-4 cursor-pointer hover:border-accent/60 hover:bg-accent/10 transition-all duration-300 group"

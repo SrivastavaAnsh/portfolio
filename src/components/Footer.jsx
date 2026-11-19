@@ -52,7 +52,7 @@ export const Footer = () => {
             <li>
               <a
                 href={personalInfo.resumeUrl}
-                download="Ansh_Srivastava_Resume.pdf"
+                download="Ansh_Srivastava.pdf"
                 className="uppercase tracking-wider hover:text-frost transition-colors text-frost font-medium flex items-center gap-1.5"
               >
                 <FileText className="w-3.5 h-3.5 text-accent" />
