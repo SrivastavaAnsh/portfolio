@@ -126,7 +126,7 @@ export const ContactSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="w-full bg-black-100/90 backdrop-blur-md border-2 border-frost/70 hover:border-frost transition-all duration-300 p-6 sm:p-7 rounded-2xl sm:rounded-3xl shadow-2xl"
+              className="w-full bg-black-100/90 backdrop-blur-md border border-frost/10 p-6 sm:p-7 rounded-3xl shadow-2xl"
             >
               <p className="text-frost/80 font-light text-sm sm:text-base leading-relaxed mb-5">
                 Feel free to connect!!
@@ -140,7 +140,7 @@ export const ContactSection = () => {
                     download={item.download ? 'Ansh_Srivastava.pdf' : undefined}
                     target={item.link.startsWith('http') || item.download ? '_blank' : '_self'}
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between gap-4 bg-tertiary border-2 border-frost/70 rounded-2xl p-3.5 sm:p-4 cursor-pointer hover:border-frost hover:bg-frost/5 transition-all duration-300 group"
+                    className="flex items-center justify-between gap-4 bg-tertiary border border-frost/10 rounded-2xl p-3.5 sm:p-4 cursor-pointer hover:border-accent/60 hover:bg-accent/10 transition-all duration-300 group"
                   >
                     <div className="flex items-center gap-3.5 min-w-0">
                       {renderIcon(item.iconType)}
