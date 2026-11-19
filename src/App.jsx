@@ -7,6 +7,7 @@ import AboutSection from './components/AboutSection';
 import ProjectsSection from './components/ProjectStack';
 import ExperienceTimeline from './components/ExperienceTimeline';
 import TechToolkit from './components/TechToolkit';
+import CoreValues from './components/CoreValues';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 
@@ -36,6 +37,9 @@ export function App() {
 
       {/* Skills & Technologies Toolkit */}
       <TechToolkit />
+
+      {/* Things out of Resume / Core Values */}
+      <CoreValues />
 
       {/* Get in touch & 3D Interactive Planet */}
       <ContactSection />
