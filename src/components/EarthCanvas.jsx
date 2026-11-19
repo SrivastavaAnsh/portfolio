@@ -73,7 +73,7 @@ export const EarthCanvas = () => {
       '/planet/scene.gltf',
       (gltf) => {
         planetMesh = gltf.scene;
-        planetMesh.scale.set(2.53, 2.53, 2.53);
+        planetMesh.scale.set(2.4, 2.4, 2.4);
         planetMesh.position.set(0, 0, 0);
         scene.add(planetMesh);
 
