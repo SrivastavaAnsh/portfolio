@@ -1,7 +1,57 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { skillsList } from '../data/portfolio';
 import { Code2, Smartphone, Database, Layers, Sparkles } from 'lucide-react';
+import {
+  SwiftIcon,
+  SwiftUIIcon,
+  SpriteKitIcon,
+  XcodeIcon,
+  AppleFoundationIcon,
+  AndroidIcon,
+  JavaIcon,
+  PythonIcon,
+  JavaScriptIcon,
+  TypeScriptIcon,
+  ReactIcon,
+  TailwindIcon,
+  SpringIcon,
+  SQLIcon,
+  PostgresIcon,
+  MySQLIcon,
+  SupabaseIcon,
+  FirebaseIcon,
+  GitIcon,
+  JiraIcon,
+  FigmaIcon,
+  CSSIcon,
+  HTMLIcon,
+} from './TechIcons';
+
+const marqueeSkills = [
+  { name: 'Swift', icon: SwiftIcon },
+  { name: 'SwiftUI', icon: SwiftUIIcon },
+  { name: 'SpriteKit', icon: SpriteKitIcon },
+  { name: 'Xcode', icon: XcodeIcon },
+  { name: 'Apple Foundation Models', icon: AppleFoundationIcon },
+  { name: 'Android', icon: AndroidIcon },
+  { name: 'Java', icon: JavaIcon },
+  { name: 'Python', icon: PythonIcon },
+  { name: 'JavaScript', icon: JavaScriptIcon },
+  { name: 'TypeScript', icon: TypeScriptIcon },
+  { name: 'React JS', icon: ReactIcon },
+  { name: 'Tailwind CSS', icon: TailwindIcon },
+  { name: 'Spring Boot', icon: SpringIcon },
+  { name: 'SQL', icon: SQLIcon },
+  { name: 'PostgreSQL', icon: PostgresIcon },
+  { name: 'MySQL', icon: MySQLIcon },
+  { name: 'Supabase', icon: SupabaseIcon },
+  { name: 'Firebase', icon: FirebaseIcon },
+  { name: 'Git & GitHub', icon: GitIcon },
+  { name: 'Jira / Agile', icon: JiraIcon },
+  { name: 'Figma', icon: FigmaIcon },
+  { name: 'CSS 3', icon: CSSIcon },
+  { name: 'HTML 5', icon: HTMLIcon },
+];
 
 const categories = [
   {
@@ -54,24 +104,22 @@ export const TechToolkit = () => {
         <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-28 z-10 bg-gradient-to-l from-primary to-transparent" />
 
         <div className="flex gap-3 sm:gap-4 w-max animate-marquee">
-          {[...skillsList, ...skillsList, ...skillsList].map((skill, idx) => (
-            <div
-              key={`${skill.name}-${idx}`}
-              className={`flex items-center gap-2.5 rounded-full border px-4 py-2 sm:px-5 sm:py-2.5 shrink-0 shadow-md ${
-                skill.highlight
-                  ? 'border-accent/40 bg-black-100 hover:border-accent hover:bg-accent/10'
-                  : 'border-frost/15 bg-black-100 hover:border-frost/40'
-              }`}
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-              <span className="text-frost font-medium text-xs sm:text-sm tracking-wide">
-                {skill.name}
-              </span>
-              <span className="text-frost/40 text-[9px] uppercase font-light">
-                {skill.category}
-              </span>
-            </div>
-          ))}
+          {[...marqueeSkills, ...marqueeSkills].map((skill, idx) => {
+            const Icon = skill.icon;
+            return (
+              <div
+                key={`${skill.name}-${idx}`}
+                className="flex items-center gap-3 rounded-full border border-frost/15 bg-black-100 px-5 py-2.5 sm:px-6 sm:py-3 shrink-0 hover:border-frost/40 hover:bg-frost/5 transition-all duration-300 shadow-md"
+              >
+                <div className="w-5 h-5 sm:w-6 sm:h-6 shrink-0 flex items-center justify-center">
+                  <Icon className="w-full h-full object-contain" />
+                </div>
+                <span className="text-frost font-medium uppercase tracking-wider text-xs sm:text-sm whitespace-nowrap">
+                  {skill.name}
+                </span>
+              </div>
+            );
+          })}
         </div>
       </div>
 
