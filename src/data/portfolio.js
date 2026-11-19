@@ -78,12 +78,12 @@ export const flagshipProjects = [
   {
     id: "loop",
     number: "02",
-    name: "Loop",
+    name: "Loop: Manage Organization",
     subtitle: "Your Organization, All in One Loop",
     category: "ORGANIZATIONAL PLATFORM · TESTFLIGHT",
     description: "A unified enterprise platform built with SwiftUI, PostgreSQL, and robust backend APIs to streamline members, events, announcements, attendance, and administrative approvals.",
     testFlightUrl: "https://testflight.apple.com/join/t92bCxWT",
-    sourceUrl: "https://github.com/SrivastavaAnsh",
+    sourceUrl: "https://github.com/ShivamSingh321GO/ClubIt/tree/develop",
     stat: "TestFlight Available · Multi-Tenant Architecture",
     color: "#B600A8",
     tags: [
@@ -120,7 +120,7 @@ export const flagshipProjects = [
     subtitle: "Enterprise Fleet Telematics Application",
     category: "ROLE-BASED iOS PLATFORM · INFOSYS INTERNSHIP",
     description: "An enterprise-grade role-based iOS application developed during my internship at Infosys' Mysore Development Centre, uniting Fleet Managers, Drivers, and Maintenance teams.",
-    sourceUrl: "https://github.com/SrivastavaAnsh",
+    sourceUrl: "https://github.com/OnkarDureja/FMS-Team-07",
     stat: "Infosys Internship · Real-Time Telematics",
     color: "#10A37F",
     tags: [

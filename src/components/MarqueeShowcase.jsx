@@ -22,7 +22,7 @@ const marqueeItemsRow1 = [
     link: '#',
   },
   {
-    title: 'Loop',
+    title: 'Loop: Manage Organization',
     type: 'Unified Organization Platform',
     badge: 'TestFlight Beta',
     icon: Smartphone,
@@ -37,7 +37,7 @@ const marqueeItemsRow1 = [
     icon: Terminal,
     gradient: 'from-emerald-600/30 to-teal-600/30',
     tags: ['SwiftUI', 'Supabase', 'Agile/Jira'],
-    link: '#projects',
+    link: 'https://github.com/OnkarDureja/FMS-Team-07',
   },
 ];
 
