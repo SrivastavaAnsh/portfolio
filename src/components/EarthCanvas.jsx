@@ -1,13 +1,15 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 export const EarthCanvas = () => {
-  const containerRef = useRef(null);
+  const mountRef = useRef(null);
+  const [loading, setLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const container = containerRef.current;
+    const container = mountRef.current;
     if (!container) return;
 
     let isVisible = false;
@@ -63,12 +65,39 @@ export const EarthCanvas = () => {
     blueRimLight.position.set(-2, 3, 4);
     scene.add(blueRimLight);
 
-    // 4. Load exact 3D GLTF Planet Model with Swirling Clouds
+    // 4. Loading Manager with Real-Time Progress Tracking
+    const manager = new THREE.LoadingManager();
+
+    manager.onStart = () => {
+      setLoading(true);
+      setProgress(0);
+    };
+
+    manager.onProgress = (_url, itemsLoaded, itemsTotal) => {
+      if (itemsTotal > 0) {
+        const pct = (itemsLoaded / itemsTotal) * 100;
+        setProgress((prev) => Math.max(prev, pct));
+      }
+    };
+
+    manager.onLoad = () => {
+      setProgress(100);
+      setTimeout(() => {
+        setLoading(false);
+      }, 250);
+    };
+
+    manager.onError = (url) => {
+      console.warn('Failed to load asset in planet model:', url);
+      setLoading(false);
+    };
+
+    // 5. Load exact 3D GLTF Planet Model with Swirling Clouds
     let planetMesh = null;
     let mixer = null;
     const clock = new THREE.Clock();
 
-    const loader = new GLTFLoader();
+    const loader = new GLTFLoader(manager);
     loader.load(
       '/planet/scene.gltf',
       (gltf) => {
@@ -86,13 +115,19 @@ export const EarthCanvas = () => {
           });
         }
       },
-      undefined,
+      (xhr) => {
+        if (xhr.lengthComputable && xhr.total > 0) {
+          const bytePct = (xhr.loaded / xhr.total) * 100;
+          setProgress((prev) => Math.max(prev, bytePct));
+        }
+      },
       (error) => {
         console.warn('Failed to load planet GLTF model:', error);
+        setLoading(false);
       }
     );
 
-    // 5. Responsive Resize with ResizeObserver & Window Resize
+    // 6. Responsive Resize with ResizeObserver & Window Resize
     const updateSize = (newW, newH) => {
       if (!newW || !newH) return;
       camera.aspect = newW / newH;
@@ -116,7 +151,7 @@ export const EarthCanvas = () => {
     };
     window.addEventListener('resize', handleResize);
 
-    // 6. Animation Loop (Active only when visible in viewport)
+    // 7. Animation Loop (Active only when visible in viewport)
     const animate = () => {
       if (!isVisible) return;
       animationFrameId = requestAnimationFrame(animate);
@@ -155,10 +190,25 @@ export const EarthCanvas = () => {
   }, []);
 
   return (
-    <div
-      ref={containerRef}
-      className="w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
-    />
+    <div className="relative w-full h-full flex items-center justify-center">
+      {/* 3D WebGL Canvas */}
+      <div
+        ref={mountRef}
+        className={`w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing select-none transition-opacity duration-700 ${
+          loading ? 'opacity-0 pointer-events-none' : 'opacity-100'
+        }`}
+      />
+
+      {/* Loading animation matching 5ach1n.vercel.app / Three.js CanvasLoader */}
+      {loading && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-10">
+          <span className="canvas-loader" />
+          <p className="text-[#F1F1F1] text-sm font-extrabold mt-10 tracking-wider select-none font-kanit">
+            {progress.toFixed(2)}%
+          </p>
+        </div>
+      )}
+    </div>
   );
 };
 
