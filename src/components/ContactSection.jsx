@@ -195,7 +195,7 @@ export const ContactSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="w-full lg:flex-1 h-[360px] sm:h-[420px] md:h-[480px] lg:h-[500px] xl:h-[540px] max-w-[560px] xl:max-w-[620px] flex items-center justify-center relative mx-auto"
+            className="w-full lg:flex-1 h-[380px] sm:h-[440px] md:h-[500px] lg:h-[520px] xl:h-[560px] max-w-[580px] xl:max-w-[640px] flex items-center justify-center relative mx-auto lg:-translate-y-6 xl:-translate-y-8"
           >
             <EarthCanvas />
           </motion.div>
