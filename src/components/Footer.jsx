@@ -56,7 +56,7 @@ export const Footer = () => {
                 className="uppercase tracking-wider hover:text-frost transition-colors text-frost font-medium flex items-center gap-1.5"
               >
                 <FileText className="w-3.5 h-3.5 text-accent" />
-                Resume (PDF)
+                Resume
               </a>
             </li>
           </ul>

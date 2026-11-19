@@ -40,7 +40,7 @@ export const ContactSection = () => {
       actionType: 'copy',
     },
     {
-      name: 'Phone',
+      name: 'Phone / WhatsApp',
       display: personalInfo.phone,
       link: `tel:${personalInfo.phone}`,
       copyValue: personalInfo.phone,
@@ -48,7 +48,7 @@ export const ContactSection = () => {
       actionType: 'copy',
     },
     {
-      name: 'Resume (PDF)',
+      name: 'Resume',
       display: 'Ansh_Srivastava.pdf',
       link: personalInfo.resumeUrl,
       download: true,
