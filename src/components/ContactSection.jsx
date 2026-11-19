@@ -126,7 +126,7 @@ export const ContactSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="w-full bg-black-100/90 backdrop-blur-md border border-frost/10 p-6 sm:p-7 rounded-3xl shadow-2xl"
+              className="w-full bg-black-100/90 backdrop-blur-md border-2 border-frost/70 hover:border-frost transition-all duration-300 p-6 sm:p-7 rounded-2xl sm:rounded-3xl shadow-2xl"
             >
               <p className="text-frost/80 font-light text-sm sm:text-base leading-relaxed mb-5">
                 Feel free to connect!!
