@@ -8,7 +8,6 @@ export const Footer = () => {
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
-      // Indian Standard Time
       const timeStr = now.toLocaleTimeString('en-US', {
         timeZone: 'Asia/Kolkata',
         hour: '2-digit',
@@ -29,15 +28,15 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-primary border-t border-frost/10 px-6 md:px-12 py-14 sm:py-20 text-frost overflow-hidden">
-      <div className="max-w-7xl mx-auto flex flex-col gap-12">
+    <footer className="relative bg-primary border-t border-frost/10 px-6 md:px-12 py-12 sm:py-16 text-frost overflow-hidden">
+      <div className="max-w-7xl mx-auto flex flex-col gap-10">
         {/* Top Row */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <span className="text-frost text-2xl sm:text-3xl font-black uppercase tracking-widest block">
               {personalInfo.firstName} {personalInfo.name.split(' ')[1]}
             </span>
-            <p className="text-secondary text-xs sm:text-sm font-light mt-1.5 max-w-md">
+            <p className="text-secondary text-xs sm:text-sm font-light mt-1 max-w-md">
               Apple Swift Student Challenge 2026 Winner (WWDC26 at Apple Park, Cupertino) &amp; iOS Developer.
             </p>
           </div>
@@ -59,7 +58,7 @@ export const Footer = () => {
         </div>
 
         {/* Links Navigation */}
-        <div className="flex flex-wrap items-center justify-between gap-6 pt-8 border-t border-frost/10 text-xs sm:text-sm text-secondary">
+        <div className="flex flex-wrap items-center justify-between gap-6 pt-6 border-t border-frost/10 text-xs sm:text-sm text-secondary">
           <ul className="flex flex-wrap items-center gap-6 list-none p-0 m-0">
             {navLinks.map((link) => (
               <li key={link.id}>
@@ -73,6 +72,16 @@ export const Footer = () => {
             ))}
             <li>
               <a
+                href={personalInfo.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="uppercase tracking-wider hover:text-frost transition-colors"
+              >
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a
                 href={personalInfo.github}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -83,7 +92,7 @@ export const Footer = () => {
             </li>
             <li>
               <a
-                href="/Ansh_Srivastava_Resume.pdf"
+                href={personalInfo.resumeUrl}
                 download="Ansh_Srivastava_Resume.pdf"
                 className="uppercase tracking-wider hover:text-frost transition-colors text-frost font-medium flex items-center gap-1.5"
               >

@@ -7,7 +7,7 @@ export const personalInfo = {
   location: "Greater Noida, Uttar Pradesh, India",
   phone: "+91 8545063769",
   email: "srivastavaansh3456@gmail.com",
-  linkedin: "https://www.linkedin.com/in/anshsrivastava",
+  linkedin: "https://www.linkedin.com/in/ansh-srivastava-68004b2a6",
   github: "https://github.com/SrivastavaAnsh",
   resumeUrl: "/Ansh_Srivastava_Resume.pdf",
   statusBadge: "Available for iOS & Swift Engineering Roles",
