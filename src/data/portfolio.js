@@ -221,7 +221,7 @@ export const secondaryProjects = [
     category: "Full-Stack Web Application",
     description: "Smart contact management web application built with Java Spring Boot, SQL, and Tailwind CSS. Features Google and GitHub OAuth 2.0, Cloudinary image hosting, and automated Mailtrap email workflows.",
     tags: ["Java", "Spring Boot", "SQL", "JavaScript", "Tailwind CSS", "OAuth 2.0"],
-    source_code_link: "https://github.com/SrivastavaAnsh",
+    source_code_link: "https://github.com/ProjectS301/Connexus",
     badge: "Full-Stack Platform",
   },
 ];
@@ -234,7 +234,7 @@ export const experiences = [
     location: "Mysore, India",
     type: "Industry Internship",
     description: [
-      "Completed a specialized 4-week iOS development internship at Infosys' premier Mysore Development Centre.",
+      "Completed a specialized iOS development internship at Infosys' premier Mysore Development Centre.",
       "Contributed to production mobile application development using Swift and SwiftUI, engineering responsive views, authentication flows, and data synchronization.",
       "Gained hands-on industry experience in enterprise architectures, collaborating with senior engineers in an Agile sprint-driven environment.",
     ],
@@ -244,7 +244,7 @@ export const experiences = [
     role: "Global Winner",
     company: "Apple Swift Student Challenge 2026",
     period: "2026",
-    location: "Global / Cupertino, CA",
+    location: "Global",
     type: "Apple Global Recognition",
     description: [
       "Selected by Apple as a distinguished winner of the Swift Student Challenge 2026 for an outstanding Swift Playground submission.",
