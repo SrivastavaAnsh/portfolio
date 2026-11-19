@@ -88,19 +88,19 @@ export const MarqueeShowcase = () => {
         </p>
       </div>
 
-      <div className="marquee-container flex flex-col gap-3 sm:gap-4 relative">
+      <div className="marquee-container flex flex-col gap-3 sm:gap-4 relative group cursor-pointer">
         <div className="pointer-events-none absolute inset-y-0 left-0 w-20 sm:w-40 z-20 bg-gradient-to-r from-primary to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 w-20 sm:w-40 z-20 bg-gradient-to-l from-primary to-transparent" />
 
         {/* Row 1 */}
-        <div className="flex gap-4 sm:gap-5 w-max animate-marquee">
+        <div className="flex gap-4 sm:gap-5 w-max animate-marquee group-hover:[animation-play-state:paused]">
           {[...marqueeItemsRow1, ...marqueeItemsRow1, ...marqueeItemsRow1].map((item, idx) => (
             <a
               key={`r1-${idx}`}
               href={item.link}
               target={item.link.startsWith('http') ? '_blank' : '_self'}
               rel="noopener noreferrer"
-              className="w-[260px] sm:w-[320px] rounded-2xl border border-frost/15 bg-black-100 p-4 sm:p-5 flex flex-col justify-between hover:border-frost/40 hover:scale-[1.02] transition-all duration-300 shadow-xl group"
+              className="w-[260px] sm:w-[320px] rounded-2xl sm:rounded-3xl border-2 border-frost/70 bg-black-100 p-4 sm:p-5 flex flex-col justify-between hover:border-frost hover:scale-[1.02] transition-all duration-300 shadow-xl group"
             >
               <div>
                 <div className="flex items-center justify-between mb-2">
@@ -132,14 +132,14 @@ export const MarqueeShowcase = () => {
         </div>
 
         {/* Row 2 (Reverse) */}
-        <div className="flex gap-4 sm:gap-5 w-max animate-marquee-reverse">
+        <div className="flex gap-4 sm:gap-5 w-max animate-marquee-reverse group-hover:[animation-play-state:paused]">
           {[...marqueeItemsRow2, ...marqueeItemsRow2, ...marqueeItemsRow2].map((item, idx) => (
             <a
               key={`r2-${idx}`}
               href={item.link}
               target={item.link.startsWith('http') ? '_blank' : '_self'}
               rel="noopener noreferrer"
-              className="w-[260px] sm:w-[320px] rounded-2xl border border-frost/15 bg-black-100 p-4 sm:p-5 flex flex-col justify-between hover:border-frost/40 hover:scale-[1.02] transition-all duration-300 shadow-xl group"
+              className="w-[260px] sm:w-[320px] rounded-2xl sm:rounded-3xl border-2 border-frost/70 bg-black-100 p-4 sm:p-5 flex flex-col justify-between hover:border-frost hover:scale-[1.02] transition-all duration-300 shadow-xl group"
             >
               <div>
                 <div className="flex items-center justify-between mb-2">
