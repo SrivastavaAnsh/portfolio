@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { personalInfo, navLinks } from '../data/portfolio';
-import { ArrowUp, Heart, Sparkles } from 'lucide-react';
+import { ArrowUp, FileText } from 'lucide-react';
 
 export const Footer = () => {
   const [localTime, setLocalTime] = useState('');
@@ -73,22 +73,22 @@ export const Footer = () => {
             ))}
             <li>
               <a
-                href={personalInfo.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="uppercase tracking-wider hover:text-frost transition-colors"
-              >
-                LinkedIn
-              </a>
-            </li>
-            <li>
-              <a
                 href={personalInfo.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="uppercase tracking-wider hover:text-frost transition-colors"
               >
                 GitHub
+              </a>
+            </li>
+            <li>
+              <a
+                href="/Ansh_Srivastava_Resume.pdf"
+                download="Ansh_Srivastava_Resume.pdf"
+                className="uppercase tracking-wider hover:text-frost transition-colors text-frost font-medium flex items-center gap-1.5"
+              >
+                <FileText className="w-3.5 h-3.5 text-accent" />
+                Resume (PDF)
               </a>
             </li>
           </ul>

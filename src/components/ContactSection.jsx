@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { personalInfo } from '../data/portfolio';
 import EarthCanvas from './EarthCanvas';
-import { Mail, Phone, MapPin, Linkedin, Github, Send, Copy, Check, Sparkles } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Github, Send, Copy, Check, Sparkles, FileText, Download } from 'lucide-react';
 
 export const ContactSection = () => {
   const [copiedType, setCopiedType] = useState(null);
@@ -48,20 +48,21 @@ export const ContactSection = () => {
       accent: 'border-accent-cyan/40 hover:border-accent-cyan hover:bg-accent-cyan/10',
     },
     {
-      name: 'LinkedIn',
-      value: 'linkedin.com/in/anshsrivastava',
-      href: personalInfo.linkedin,
-      copyable: false,
-      icon: Linkedin,
-      accent: 'border-frost/20 hover:border-frost/60 hover:bg-frost/5',
-    },
-    {
       name: 'GitHub',
-      value: 'github.com/anshsrivastava',
+      value: 'github.com/SrivastavaAnsh',
       href: personalInfo.github,
       copyable: false,
       icon: Github,
       accent: 'border-frost/20 hover:border-frost/60 hover:bg-frost/5',
+    },
+    {
+      name: 'Resume (PDF)',
+      value: 'Ansh_Srivastava_Resume.pdf',
+      href: personalInfo.resumeUrl,
+      download: true,
+      copyable: false,
+      icon: FileText,
+      accent: 'border-purple-500/40 hover:border-purple-400 hover:bg-purple-500/10',
     },
     {
       name: 'Location',
@@ -128,6 +129,7 @@ export const ContactSection = () => {
                           {item.href ? (
                             <a
                               href={item.href}
+                              download={item.download ? 'Ansh_Srivastava_Resume.pdf' : undefined}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="text-secondary hover:text-frost text-xs sm:text-sm font-light truncate block mt-0.5 transition-colors"
@@ -142,7 +144,7 @@ export const ContactSection = () => {
                         </div>
                       </div>
 
-                      {/* Copy Action Button */}
+                      {/* Copy Action Button / Download button */}
                       {item.copyable && (
                         <button
                           onClick={() => handleCopy(item.value, item.name)}
@@ -161,6 +163,18 @@ export const ContactSection = () => {
                             </>
                           )}
                         </button>
+                      )}
+
+                      {item.download && (
+                        <a
+                          href={item.href}
+                          download="Ansh_Srivastava_Resume.pdf"
+                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-purple-500/30 bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 text-xs transition-colors shrink-0 font-medium"
+                          title="Download Resume PDF"
+                        >
+                          <Download className="w-3.5 h-3.5" />
+                          <span className="hidden sm:inline">Download</span>
+                        </a>
                       )}
                     </div>
                   );

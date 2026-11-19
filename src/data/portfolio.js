@@ -8,7 +8,8 @@ export const personalInfo = {
   phone: "+91 8545063769",
   email: "srivastavaansh3456@gmail.com",
   linkedin: "https://www.linkedin.com/in/anshsrivastava",
-  github: "https://github.com/anshsrivastava",
+  github: "https://github.com/SrivastavaAnsh",
+  resumeUrl: "/Ansh_Srivastava_Resume.pdf",
   statusBadge: "Available for iOS & Swift Engineering Roles",
 };
 
@@ -44,7 +45,7 @@ export const flagshipProjects = [
     category: "EDUCATIONAL IOS APP · APP STORE LIVE",
     description: "An educational iOS application built natively in Swift that transforms cell biology into an interactive visual playground through fluid physics and real-time animations.",
     appStoreUrl: "https://apps.apple.com/in/app/cellumina/id6780639569",
-    sourceUrl: "https://github.com/anshsrivastava",
+    sourceUrl: "https://github.com/SrivastavaAnsh/Cellumina",
     stat: "App Store Live · SpriteKit Simulation Engine",
     color: "#4E8CF9",
     tags: [
@@ -82,7 +83,7 @@ export const flagshipProjects = [
     category: "ORGANIZATIONAL PLATFORM · TESTFLIGHT",
     description: "A unified enterprise platform built with SwiftUI, PostgreSQL, and robust backend APIs to streamline members, events, announcements, attendance, and administrative approvals.",
     testFlightUrl: "https://testflight.apple.com/join/t92bCxWT",
-    sourceUrl: "https://github.com/anshsrivastava",
+    sourceUrl: "https://github.com/SrivastavaAnsh",
     stat: "TestFlight Available · Multi-Tenant Architecture",
     color: "#B600A8",
     tags: [
@@ -119,6 +120,7 @@ export const flagshipProjects = [
     subtitle: "Enterprise Fleet Telematics Application",
     category: "ROLE-BASED IOS PLATFORM · INFOSYS INTERNSHIP",
     description: "An enterprise-grade role-based iOS application developed during my internship at Infosys' Mysore Development Centre, uniting Fleet Managers, Drivers, and Maintenance teams.",
+    sourceUrl: "https://github.com/SrivastavaAnsh",
     stat: "Infosys Internship · Real-Time Telematics",
     color: "#10A37F",
     tags: [
@@ -152,20 +154,36 @@ export const flagshipProjects = [
 
 export const secondaryProjects = [
   {
+    name: "SwiftDidLoad",
+    category: "Swift Hackathon Project",
+    description: "An innovative SwiftDidLoad Hackathon Xcode project exploring reactive UI state handling, performance profiling, and modern iOS lifecycle patterns in Swift.",
+    tags: ["Swift", "Xcode", "iOS", "Hackathon"],
+    source_code_link: "https://github.com/SrivastavaAnsh/SwiftDidLoad",
+    badge: "Hackathon Build",
+  },
+  {
+    name: "Gallery-Cleaner",
+    category: "iOS Utility App",
+    description: "Intelligent photo and storage cleanup utility app written natively in Swift, allowing users to quickly identify duplicate media, blurry photos, and large videos to optimize on-device storage.",
+    tags: ["Swift", "PhotoKit", "iOS", "Storage Optimization"],
+    source_code_link: "https://github.com/SrivastavaAnsh/Gallery-Cleaner",
+    badge: "Swift Utility",
+  },
+  {
+    name: "Cellumina-Web",
+    category: "Web Platform & Showcase",
+    description: "Official web showcase and interactive presentation platform for the Cellumina iOS application, detailing features, educational biology modules, and App Store availability.",
+    tags: ["HTML", "CSS", "JavaScript", "Responsive Design"],
+    source_code_link: "https://github.com/SrivastavaAnsh/Cellumina-Web",
+    badge: "App Showcase",
+  },
+  {
     name: "Connexus",
     category: "Full-Stack Web Application",
     description: "Smart contact management web application built with Java Spring Boot, SQL, and Tailwind CSS. Features Google and GitHub OAuth 2.0, Cloudinary image hosting, and automated Mailtrap email workflows.",
     tags: ["Java", "Spring Boot", "SQL", "JavaScript", "Tailwind CSS", "OAuth 2.0"],
-    source_code_link: "https://github.com/anshsrivastava",
+    source_code_link: "https://github.com/SrivastavaAnsh",
     badge: "Full-Stack Platform",
-  },
-  {
-    name: "WWDC26 Swift Playground",
-    category: "Apple Swift Student Challenge Winner",
-    description: "The winning interactive Swift Playground submission selected by Apple engineers, leading to an in-person invitation to Apple Park in Cupertino for WWDC26.",
-    tags: ["Swift", "SpriteKit", "SwiftUI", "Apple Park", "WWDC26"],
-    source_code_link: "https://github.com/anshsrivastava",
-    badge: "Apple Park Winner",
   },
 ];
 
@@ -235,7 +253,7 @@ export const skillsList = [
 export const navLinks = [
   { id: "about", title: "About" },
   { id: "projects", title: "Projects" },
-  { id: "experience", title: "Experience" },
+  { id: "experience", title: "Work" },
   { id: "skills", title: "Skills" },
   { id: "contact", title: "Contact" },
 ];

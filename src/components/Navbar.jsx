@@ -72,10 +72,13 @@ export const Navbar = () => {
             </li>
           ))}
 
-          {/* Clean Outline Pill Resume Button */}
+          {/* Clean Outline Pill Resume Download Button */}
           <li>
             <a
-              href="#contact"
+              href="/Ansh_Srivastava_Resume.pdf"
+              download="Ansh_Srivastava_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full border border-frost/50 text-frost text-xs md:text-sm font-medium uppercase tracking-widest px-5 py-2 hover:bg-frost/10 transition-colors duration-300 inline-block"
             >
               Resume
@@ -113,11 +116,14 @@ export const Navbar = () => {
               ))}
               <li className="pt-2 border-t border-frost/10 w-full">
                 <a
-                  href="#contact"
+                  href="/Ansh_Srivastava_Resume.pdf"
+                  download="Ansh_Srivastava_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-frost/60 text-sm font-medium uppercase tracking-wider block"
+                  className="text-frost/90 text-sm font-medium uppercase tracking-wider block"
                 >
-                  Resume
+                  Download Resume
                 </a>
               </li>
             </ul>
