@@ -2,7 +2,7 @@ export const personalInfo = {
   name: "Ansh Srivastava",
   firstName: "ANSH",
   role: "Mobile Developer & Product Designer",
-  heroTagline: "Apple Swift Student Challenge 2026 Winner crafting fluid, interactive & unified mobile experiences across iOS, Android and product design.",
+  heroTagline: "Apple Swift Student Challenge 2026 Winner (attended WWDC26 at Apple Park, Cupertino) crafting fluid, interactive & unified mobile experiences across iOS, Android and product design.",
   summary: "I build high-craft mobile experiences, interactive simulations, and scalable architectures across iOS, Android and product design. Recognized by Apple as a Swift Student Challenge 2026 Winner and engineering enterprise platforms at Infosys, I design with extreme attention to detail, fluid performance, and thoughtful user-centered aesthetics.",
   location: "Greater Noida, Uttar Pradesh, India",
   phone: "+91 8545063769",
@@ -189,7 +189,7 @@ export const secondaryProjects = [
 
 export const experiences = [
   {
-    role: "iOS Development Intern",
+    role: "Application Development Intern",
     company: "Infosys, Mysore Development Centre",
     period: "May 2026 - Jun 2026",
     location: "Mysore, India",
