@@ -109,7 +109,7 @@ export const TechToolkit = () => {
             return (
               <div
                 key={`${skill.name}-${idx}`}
-                className="flex items-center gap-3.5 rounded-full border border-frost/30 bg-black-100 px-5 py-3 sm:px-6 sm:py-3.5 shrink-0 hover:border-frost/60 hover:bg-frost/5 transition-all duration-300 shadow-md"
+                className="flex items-center gap-3.5 rounded-full border-2 border-frost/70 bg-black-100 px-5 py-3 sm:px-6 sm:py-3.5 shrink-0 hover:border-frost hover:bg-frost/5 transition-all duration-300 shadow-md"
               >
                 <div className="w-6 h-6 sm:w-7 sm:h-7 shrink-0 flex items-center justify-center">
                   <Icon className="w-full h-full object-contain" />
