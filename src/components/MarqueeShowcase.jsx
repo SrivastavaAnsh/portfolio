@@ -81,100 +81,93 @@ const marqueeItemsRow2 = [
 
 export const MarqueeShowcase = () => {
   return (
-    <section className="bg-primary pt-20 sm:pt-28 pb-12 overflow-hidden border-b border-frost/10">
-      <div className="text-center px-6 mb-8 sm:mb-12">
+    <section className="bg-primary py-10 sm:py-14 overflow-hidden border-b border-frost/10">
+      <div className="text-center px-6 mb-6 sm:mb-8">
         <p className="text-secondary uppercase tracking-[0.35em] text-[10px] sm:text-xs font-light">
           Shipped products &amp; milestones · 0 → 1 → scale
         </p>
       </div>
 
-      <div className="marquee-container flex flex-col gap-4 sm:gap-6 relative">
-        {/* Left & Right gradient fade masks */}
+      <div className="marquee-container flex flex-col gap-3 sm:gap-4 relative">
         <div className="pointer-events-none absolute inset-y-0 left-0 w-20 sm:w-40 z-20 bg-gradient-to-r from-primary to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 w-20 sm:w-40 z-20 bg-gradient-to-l from-primary to-transparent" />
 
         {/* Row 1 */}
-        <div className="flex gap-4 sm:gap-6 w-max animate-marquee">
-          {[...marqueeItemsRow1, ...marqueeItemsRow1, ...marqueeItemsRow1].map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <a
-                key={`r1-${idx}`}
-                href={item.link}
-                target={item.link.startsWith('http') ? '_blank' : '_self'}
-                rel="noopener noreferrer"
-                className="w-[280px] sm:w-[360px] rounded-2xl sm:rounded-3xl border border-frost/15 bg-black-100 p-5 sm:p-6 flex flex-col justify-between hover:border-frost/40 hover:scale-[1.02] transition-all duration-300 shadow-xl group"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-[10px] uppercase tracking-wider font-semibold px-2.5 py-0.5 rounded-full bg-frost/10 text-frost/90 border border-frost/15">
-                      {item.badge}
-                    </span>
-                    <ArrowUpRight className="w-4 h-4 text-frost/40 group-hover:text-frost group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-                  </div>
-                  <h4 className="text-frost font-bold uppercase tracking-wide text-lg sm:text-xl">
-                    {item.title}
-                  </h4>
-                  <p className="text-secondary text-xs sm:text-sm font-light mt-1">
-                    {item.type}
-                  </p>
+        <div className="flex gap-4 sm:gap-5 w-max animate-marquee">
+          {[...marqueeItemsRow1, ...marqueeItemsRow1, ...marqueeItemsRow1].map((item, idx) => (
+            <a
+              key={`r1-${idx}`}
+              href={item.link}
+              target={item.link.startsWith('http') ? '_blank' : '_self'}
+              rel="noopener noreferrer"
+              className="w-[260px] sm:w-[320px] rounded-2xl border border-frost/15 bg-black-100 p-4 sm:p-5 flex flex-col justify-between hover:border-frost/40 hover:scale-[1.02] transition-all duration-300 shadow-xl group"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[9px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full bg-frost/10 text-frost/90 border border-frost/15">
+                    {item.badge}
+                  </span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-frost/40 group-hover:text-frost group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                 </div>
+                <h4 className="text-frost font-bold uppercase tracking-wide text-base sm:text-lg">
+                  {item.title}
+                </h4>
+                <p className="text-secondary text-xs font-light mt-0.5">
+                  {item.type}
+                </p>
+              </div>
 
-                <div className="flex flex-wrap gap-1.5 mt-4 pt-3 border-t border-frost/10">
-                  {item.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="text-[9px] uppercase tracking-wider text-frost/60 px-2 py-0.5 rounded-full border border-frost/10"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </a>
-            );
-          })}
+              <div className="flex flex-wrap gap-1.5 mt-3 pt-2.5 border-t border-frost/10">
+                {item.tags.map((t) => (
+                  <span
+                    key={t}
+                    className="text-[9px] uppercase tracking-wider text-frost/60 px-2 py-0.5 rounded-full border border-frost/10"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </a>
+          ))}
         </div>
 
         {/* Row 2 (Reverse) */}
-        <div className="flex gap-4 sm:gap-6 w-max animate-marquee-reverse">
-          {[...marqueeItemsRow2, ...marqueeItemsRow2, ...marqueeItemsRow2].map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <a
-                key={`r2-${idx}`}
-                href={item.link}
-                target={item.link.startsWith('http') ? '_blank' : '_self'}
-                rel="noopener noreferrer"
-                className="w-[280px] sm:w-[360px] rounded-2xl sm:rounded-3xl border border-frost/15 bg-black-100 p-5 sm:p-6 flex flex-col justify-between hover:border-frost/40 hover:scale-[1.02] transition-all duration-300 shadow-xl group"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-[10px] uppercase tracking-wider font-semibold px-2.5 py-0.5 rounded-full bg-accent/15 text-accent border border-accent/30">
-                      {item.badge}
-                    </span>
-                    <ArrowUpRight className="w-4 h-4 text-frost/40 group-hover:text-frost group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-                  </div>
-                  <h4 className="text-frost font-bold uppercase tracking-wide text-lg sm:text-xl">
-                    {item.title}
-                  </h4>
-                  <p className="text-secondary text-xs sm:text-sm font-light mt-1">
-                    {item.type}
-                  </p>
+        <div className="flex gap-4 sm:gap-5 w-max animate-marquee-reverse">
+          {[...marqueeItemsRow2, ...marqueeItemsRow2, ...marqueeItemsRow2].map((item, idx) => (
+            <a
+              key={`r2-${idx}`}
+              href={item.link}
+              target={item.link.startsWith('http') ? '_blank' : '_self'}
+              rel="noopener noreferrer"
+              className="w-[260px] sm:w-[320px] rounded-2xl border border-frost/15 bg-black-100 p-4 sm:p-5 flex flex-col justify-between hover:border-frost/40 hover:scale-[1.02] transition-all duration-300 shadow-xl group"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[9px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full bg-accent/15 text-accent border border-accent/30">
+                    {item.badge}
+                  </span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-frost/40 group-hover:text-frost group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                 </div>
+                <h4 className="text-frost font-bold uppercase tracking-wide text-base sm:text-lg">
+                  {item.title}
+                </h4>
+                <p className="text-secondary text-xs font-light mt-0.5">
+                  {item.type}
+                </p>
+              </div>
 
-                <div className="flex flex-wrap gap-1.5 mt-4 pt-3 border-t border-frost/10">
-                  {item.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="text-[9px] uppercase tracking-wider text-frost/60 px-2 py-0.5 rounded-full border border-frost/10"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </a>
-            );
-          })}
+              <div className="flex flex-wrap gap-1.5 mt-3 pt-2.5 border-t border-frost/10">
+                {item.tags.map((t) => (
+                  <span
+                    key={t}
+                    className="text-[9px] uppercase tracking-wider text-frost/60 px-2 py-0.5 rounded-full border border-frost/10"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </a>
+          ))}
         </div>
       </div>
     </section>

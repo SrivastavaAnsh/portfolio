@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { personalInfo } from '../data/portfolio';
 import EarthCanvas from './EarthCanvas';
-import { Mail, Phone, MapPin, Linkedin, Github, Send, Copy, Check, Sparkles, FileText, Download } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Send, Copy, Check, Sparkles, FileText, Download } from 'lucide-react';
 
 export const ContactSection = () => {
   const [copiedType, setCopiedType] = useState(null);
@@ -21,7 +21,6 @@ export const ContactSection = () => {
     if (!formData.name || !formData.email || !formData.message) return;
 
     setIsSubmitting(true);
-    // Simulate swift submission
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSent(true);
@@ -75,55 +74,54 @@ export const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="relative bg-primary px-4 sm:px-8 md:px-12 py-20 sm:py-28 scroll-mt-[90px] overflow-hidden">
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 right-0 w-96 h-96 bg-accent-cyan/10 rounded-full blur-3xl pointer-events-none" />
+    <section id="contact" className="relative bg-primary px-4 sm:px-8 md:px-12 py-16 sm:py-24 scroll-mt-[90px] overflow-hidden">
+      <div className="absolute top-1/2 left-0 w-80 h-80 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 right-0 w-80 h-80 bg-accent-cyan/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="text-center sm:text-left mb-10 sm:mb-12">
-          <p className="text-secondary uppercase tracking-[0.25em] text-xs sm:text-[14px] font-light">
+        <div className="text-center sm:text-left mb-8 sm:mb-10">
+          <p className="text-secondary uppercase tracking-[0.25em] text-xs font-light">
             Get in touch
           </p>
           <h2
-            className="hero-heading font-black uppercase tracking-tight leading-none mt-2"
-            style={{ fontSize: 'clamp(2.5rem, 7vw, 90px)' }}
+            className="hero-heading font-black uppercase tracking-tight leading-none mt-1.5"
+            style={{ fontSize: 'clamp(2.5rem, 6vw, 84px)' }}
           >
             Contact.
           </h2>
         </div>
 
-        {/* 2-Column Responsive Layout: Left (Info & Form) | Right (Interactive 3D Planet) */}
-        <div className="flex flex-col-reverse xl:flex-row items-stretch gap-10 lg:gap-14">
-          {/* Left Column: Direct Connect & Form */}
+        {/* 2-Column Responsive Layout */}
+        <div className="flex flex-col-reverse xl:flex-row items-stretch gap-8 lg:gap-10">
+          {/* Left Column: Form & Channels */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="flex-1 bg-black-100 border border-frost/15 p-6 sm:p-10 rounded-[36px] flex flex-col justify-between shadow-2xl relative"
+            className="flex-1 bg-black-100 border border-frost/15 p-5 sm:p-7 rounded-[28px] flex flex-col justify-between shadow-2xl relative"
           >
             <div>
-              <p className="text-frost/90 font-light text-base sm:text-lg leading-relaxed mb-8">
+              <p className="text-frost/90 font-light text-sm sm:text-base leading-relaxed mb-6">
                 Whether you have an iOS opportunity, want to collaborate on Swift &amp; spatial computing, or discuss WWDC innovations, feel free to reach out.
               </p>
 
               {/* Contact Channels Grid */}
-              <div className="flex flex-col gap-3.5 mb-10">
+              <div className="flex flex-col gap-2.5 mb-8">
                 {contactLinks.map((item) => {
                   const Icon = item.icon;
                   return (
                     <div
                       key={item.name}
-                      className={`flex items-center justify-between gap-4 bg-tertiary border rounded-2xl p-4 transition-all duration-300 ${item.accent}`}
+                      className={`flex items-center justify-between gap-3 bg-tertiary border rounded-xl p-3 transition-all duration-300 ${item.accent}`}
                     >
-                      <div className="flex items-center gap-4 min-w-0">
-                        <div className="w-10 h-10 rounded-xl bg-black-100 border border-frost/10 flex items-center justify-center shrink-0 text-frost">
-                          <Icon className="w-5 h-5 text-frost" />
+                      <div className="flex items-center gap-3 min-w-0">
+                        <div className="w-8 h-8 rounded-lg bg-black-100 border border-frost/10 flex items-center justify-center shrink-0 text-frost">
+                          <Icon className="w-4 h-4 text-frost" />
                         </div>
                         <div className="min-w-0">
-                          <h4 className="text-frost text-sm sm:text-base font-semibold leading-tight">
+                          <h4 className="text-frost text-xs sm:text-sm font-semibold leading-tight">
                             {item.name}
                           </h4>
                           {item.href ? (
@@ -132,33 +130,32 @@ export const ContactSection = () => {
                               download={item.download ? 'Ansh_Srivastava_Resume.pdf' : undefined}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-secondary hover:text-frost text-xs sm:text-sm font-light truncate block mt-0.5 transition-colors"
+                              className="text-secondary hover:text-frost text-xs font-light truncate block mt-0.5 transition-colors"
                             >
                               {item.value}
                             </a>
                           ) : (
-                            <p className="text-secondary text-xs sm:text-sm font-light truncate mt-0.5">
+                            <p className="text-secondary text-xs font-light truncate mt-0.5">
                               {item.value}
                             </p>
                           )}
                         </div>
                       </div>
 
-                      {/* Copy Action Button / Download button */}
                       {item.copyable && (
                         <button
                           onClick={() => handleCopy(item.value, item.name)}
-                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-frost/15 bg-black-100 hover:bg-frost/10 text-frost/70 hover:text-frost text-xs transition-colors shrink-0"
+                          className="flex items-center gap-1 px-2.5 py-1 rounded-lg border border-frost/15 bg-black-100 hover:bg-frost/10 text-frost/70 hover:text-frost text-[11px] transition-colors shrink-0"
                           title={`Copy ${item.name}`}
                         >
                           {copiedType === item.name ? (
                             <>
-                              <Check className="w-3.5 h-3.5 text-emerald-400" />
+                              <Check className="w-3 h-3 text-emerald-400" />
                               <span className="text-emerald-400 font-medium">Copied!</span>
                             </>
                           ) : (
                             <>
-                              <Copy className="w-3.5 h-3.5" />
+                              <Copy className="w-3 h-3" />
                               <span className="hidden sm:inline">Copy</span>
                             </>
                           )}
@@ -169,10 +166,10 @@ export const ContactSection = () => {
                         <a
                           href={item.href}
                           download="Ansh_Srivastava_Resume.pdf"
-                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-purple-500/30 bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 text-xs transition-colors shrink-0 font-medium"
+                          className="flex items-center gap-1 px-2.5 py-1 rounded-lg border border-purple-500/30 bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 text-[11px] transition-colors shrink-0 font-medium"
                           title="Download Resume PDF"
                         >
-                          <Download className="w-3.5 h-3.5" />
+                          <Download className="w-3 h-3" />
                           <span className="hidden sm:inline">Download</span>
                         </a>
                       )}
@@ -182,22 +179,22 @@ export const ContactSection = () => {
               </div>
             </div>
 
-            {/* Quick Interactive Message Form */}
-            <form onSubmit={handleSubmit} className="border-t border-frost/10 pt-8 flex flex-col gap-4">
-              <div className="flex items-center gap-2 mb-1">
-                <Sparkles className="w-4 h-4 text-accent" />
-                <span className="text-frost font-semibold text-sm uppercase tracking-wider">
+            {/* Quick Form */}
+            <form onSubmit={handleSubmit} className="border-t border-frost/10 pt-6 flex flex-col gap-3">
+              <div className="flex items-center gap-2 mb-0.5">
+                <Sparkles className="w-3.5 h-3.5 text-accent" />
+                <span className="text-frost font-semibold text-xs uppercase tracking-wider">
                   Send a Quick Message
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <input
                   type="text"
                   placeholder="Your Name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full bg-tertiary border border-frost/15 rounded-xl px-4 py-3 text-frost text-sm placeholder:text-secondary/60 focus:outline-none focus:border-accent transition-colors"
+                  className="w-full bg-tertiary border border-frost/15 rounded-lg px-3.5 py-2.5 text-frost text-xs placeholder:text-secondary/60 focus:outline-none focus:border-accent transition-colors"
                   required
                 />
                 <input
@@ -205,36 +202,36 @@ export const ContactSection = () => {
                   placeholder="Your Email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full bg-tertiary border border-frost/15 rounded-xl px-4 py-3 text-frost text-sm placeholder:text-secondary/60 focus:outline-none focus:border-accent transition-colors"
+                  className="w-full bg-tertiary border border-frost/15 rounded-lg px-3.5 py-2.5 text-frost text-xs placeholder:text-secondary/60 focus:outline-none focus:border-accent transition-colors"
                   required
                 />
               </div>
 
               <textarea
-                rows="3"
+                rows="2"
                 placeholder="What would you like to discuss?"
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full bg-tertiary border border-frost/15 rounded-xl px-4 py-3 text-frost text-sm placeholder:text-secondary/60 focus:outline-none focus:border-accent transition-colors resize-none"
+                className="w-full bg-tertiary border border-frost/15 rounded-lg px-3.5 py-2.5 text-frost text-xs placeholder:text-secondary/60 focus:outline-none focus:border-accent transition-colors resize-none"
                 required
               />
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-2 rounded-xl bg-accent hover:bg-accent-glow text-white py-3.5 text-sm font-semibold uppercase tracking-wider transition-all duration-300 shadow-lg shadow-accent/25 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50"
+                className="w-full flex items-center justify-center gap-2 rounded-lg bg-accent hover:bg-accent-glow text-white py-3 text-xs font-semibold uppercase tracking-wider transition-all duration-300 shadow-md shadow-accent/25 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <span>Sending...</span>
                 ) : isSent ? (
                   <>
-                    <Check className="w-4 h-4 text-emerald-400" />
+                    <Check className="w-3.5 h-3.5 text-emerald-400" />
                     <span>Message Sent Successfully!</span>
                   </>
                 ) : (
                   <>
                     <span>Send Message</span>
-                    <Send className="w-4 h-4" />
+                    <Send className="w-3.5 h-3.5" />
                   </>
                 )}
               </button>
@@ -243,11 +240,11 @@ export const ContactSection = () => {
 
           {/* Right Column: 3D Earth Canvas */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="flex-1 xl:h-[680px] md:h-[550px] h-[400px] bg-black-100 border border-frost/15 rounded-[36px] overflow-hidden flex flex-col relative"
+            className="flex-1 xl:h-[580px] md:h-[480px] h-[340px] bg-black-100 border border-frost/15 rounded-[28px] overflow-hidden flex flex-col relative"
           >
             <EarthCanvas />
           </motion.div>
