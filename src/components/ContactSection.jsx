@@ -95,39 +95,42 @@ export const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="relative z-0 bg-primary px-5 sm:px-8 md:px-12 py-20 sm:py-28 scroll-mt-[90px] overflow-hidden">
+    <section
+      id="contact"
+      className="relative z-0 bg-primary px-5 sm:px-8 md:px-12 py-12 sm:py-16 lg:py-20 scroll-mt-[80px] overflow-hidden flex flex-col justify-center min-h-[calc(100vh-80px)]"
+    >
       {/* Stars Particle Canvas across entire Contact section background */}
       <StarsCanvas />
 
-      <div className="relative z-10 max-w-7xl mx-auto">
+      <div className="relative z-10 max-w-6xl mx-auto w-full">
         {/* Section Header outside the box as requested */}
-        <div className="text-left mb-8 sm:mb-12">
+        <div className="text-left mb-6 sm:mb-8">
           <p className="text-secondary uppercase tracking-[0.25em] text-xs sm:text-sm font-light">
             Get in touch
           </p>
           <h2
-            className="hero-heading font-black uppercase tracking-tight leading-none mt-2"
-            style={{ fontSize: 'clamp(2.8rem, 7vw, 90px)' }}
+            className="hero-heading font-black uppercase tracking-tight leading-none mt-1"
+            style={{ fontSize: 'clamp(2.4rem, 6vw, 76px)' }}
           >
             Contact.
           </h2>
         </div>
 
         {/* 2-Column Split: Left Contact Card & Right Floating 3D Planet */}
-        <div className="flex flex-col-reverse xl:flex-row items-center gap-10 xl:gap-14">
+        <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-8 lg:gap-10 xl:gap-14">
           {/* Left: Contact Card */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="w-full xl:w-[460px] bg-black-100/90 backdrop-blur-md border border-frost/10 p-6 sm:p-8 rounded-3xl shadow-2xl shrink-0"
+            className="w-full lg:w-[420px] xl:w-[450px] bg-black-100/90 backdrop-blur-md border border-frost/10 p-6 sm:p-7 rounded-3xl shadow-2xl shrink-0"
           >
-            <p className="text-frost/80 font-light text-xs sm:text-sm leading-relaxed mb-6">
-              Feel free to connect for iOS roles, Swift Playground collaborations, or WWDC innovations.
+            <p className="text-frost/80 font-light text-sm sm:text-base leading-relaxed mb-5">
+              Feel free to connect
             </p>
 
-            <div className="flex flex-col gap-3 sm:gap-3.5">
+            <div className="flex flex-col gap-2.5 sm:gap-3">
               {contactChannels.map((item) => (
                 <a
                   key={item.name}
@@ -135,7 +138,7 @@ export const ContactSection = () => {
                   download={item.download ? 'Ansh_Srivastava_Resume.pdf' : undefined}
                   target={item.link.startsWith('http') || item.download ? '_blank' : '_self'}
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between gap-4 bg-tertiary border border-frost/10 rounded-2xl p-4 cursor-pointer hover:border-accent/60 hover:bg-accent/10 transition-all duration-300 group"
+                  className="flex items-center justify-between gap-4 bg-tertiary border border-frost/10 rounded-2xl p-3.5 sm:p-4 cursor-pointer hover:border-accent/60 hover:bg-accent/10 transition-all duration-300 group"
                 >
                   <div className="flex items-center gap-3.5 min-w-0">
                     {renderIcon(item.iconType)}
@@ -192,7 +195,7 @@ export const ContactSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="w-full xl:flex-1 h-[420px] sm:h-[500px] md:h-[560px] xl:h-[620px] flex items-center justify-center relative"
+            className="w-full lg:flex-1 h-[360px] sm:h-[420px] md:h-[480px] lg:h-[500px] xl:h-[540px] max-w-[560px] xl:max-w-[620px] flex items-center justify-center relative mx-auto"
           >
             <EarthCanvas />
           </motion.div>

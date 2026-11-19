@@ -19,7 +19,7 @@ export const EarthCanvas = () => {
     const height = container.clientHeight || 500;
 
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 200);
-    camera.position.set(-4, 3, 6);
+    camera.position.set(-3.8, 2.8, 5.8);
 
     const renderer = new THREE.WebGLRenderer({
       antialias: true,
@@ -30,6 +30,9 @@ export const EarthCanvas = () => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.2;
+    renderer.domElement.style.display = 'block';
+    renderer.domElement.style.width = '100%';
+    renderer.domElement.style.height = '100%';
     container.innerHTML = '';
     container.appendChild(renderer.domElement);
 
@@ -42,6 +45,7 @@ export const EarthCanvas = () => {
     controls.minPolarAngle = Math.PI / 2;
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
+    controls.target.set(0, 0, 0);
 
     // 3. Lighting
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
@@ -69,7 +73,7 @@ export const EarthCanvas = () => {
       '/planet/scene.gltf',
       (gltf) => {
         planetMesh = gltf.scene;
-        planetMesh.scale.set(2.5, 2.5, 2.5);
+        planetMesh.scale.set(2.3, 2.3, 2.3);
         planetMesh.position.set(0, 0, 0);
         scene.add(planetMesh);
 
@@ -88,14 +92,27 @@ export const EarthCanvas = () => {
       }
     );
 
-    // 5. Responsive Resize
-    const handleResize = () => {
-      if (!container) return;
-      const newW = container.clientWidth;
-      const newH = container.clientHeight;
+    // 5. Responsive Resize with ResizeObserver & Window Resize
+    const updateSize = (newW, newH) => {
+      if (!newW || !newH) return;
       camera.aspect = newW / newH;
       camera.updateProjectionMatrix();
       renderer.setSize(newW, newH);
+    };
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const { width: newW, height: newH } = entry.contentRect;
+        if (newW > 0 && newH > 0) {
+          updateSize(newW, newH);
+        }
+      }
+    });
+    resizeObserver.observe(container);
+
+    const handleResize = () => {
+      if (!container) return;
+      updateSize(container.clientWidth, container.clientHeight);
     };
     window.addEventListener('resize', handleResize);
 
@@ -129,6 +146,7 @@ export const EarthCanvas = () => {
 
     return () => {
       observer.disconnect();
+      resizeObserver.disconnect();
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('resize', handleResize);
       controls.dispose();
@@ -139,7 +157,7 @@ export const EarthCanvas = () => {
   return (
     <div
       ref={containerRef}
-      className="w-full h-full min-h-[380px] sm:min-h-[460px] md:min-h-[550px] cursor-grab active:cursor-grabbing select-none"
+      className="w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
     />
   );
 };
