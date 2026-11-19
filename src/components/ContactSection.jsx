@@ -129,7 +129,7 @@ export const ContactSection = () => {
               className="w-full bg-black-100/90 backdrop-blur-md border border-frost/10 p-6 sm:p-7 rounded-3xl shadow-2xl"
             >
               <p className="text-frost/80 font-light text-sm sm:text-base leading-relaxed mb-5">
-                Feel free to connect
+                Feel free to connect!!
               </p>
 
               <div className="flex flex-col gap-2.5 sm:gap-3">
