@@ -150,6 +150,45 @@ export const flagshipProjects = [
     ],
     previewTheme: "fleet",
   },
+  {
+    id: "connexus",
+    number: "04",
+    name: "Connexus",
+    subtitle: "Smart Contact Management Web Platform",
+    category: "FULL-STACK PLATFORM · SPRING BOOT & SQL",
+    description: "A production-grade smart contact management web application engineered with Java Spring Boot, MySQL, and Tailwind CSS. Features Google & GitHub OAuth 2.0 social authentication, Cloudinary cloud image hosting, Mailtrap email verification, and responsive contact workflows.",
+    sourceUrl: "https://github.com/ProjectS301/Connexus",
+    stat: "Spring Boot 3 · MySQL · OAuth 2.0 · Cloudinary",
+    color: "#F59E0B",
+    tags: [
+      { name: "Java" },
+      { name: "Spring Boot" },
+      { name: "MySQL & JPA" },
+      { name: "OAuth 2.0" },
+      { name: "Cloudinary" },
+      { name: "Tailwind CSS" },
+      { name: "Mailtrap" },
+    ],
+    highlights: [
+      {
+        label: "OAUTH 2.0 & SECURITY",
+        body: "Unified Google and GitHub social login alongside encrypted credentials and Spring Security session authorization.",
+      },
+      {
+        label: "SMART CONTACT DIRECTORY",
+        body: "Real-time search across Name, Phone, and Email with dynamic pagination, CRUD operations, and favorite bookmarking.",
+      },
+      {
+        label: "CLOUDINARY IMAGE STORAGE",
+        body: "Seamless cloud avatar uploads and image optimization for personalized contact cards.",
+      },
+      {
+        label: "AUTOMATED VERIFICATION",
+        body: "Integrated Mailtrap SMTP pipeline for email verification, onboarding workflows, and security notifications.",
+      },
+    ],
+    previewTheme: "connexus",
+  },
 ];
 
 export const secondaryProjects = [

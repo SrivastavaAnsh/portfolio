@@ -1,5 +1,20 @@
 import React, { useState } from 'react';
-import { Sparkles, Activity, Users, Calendar, CheckCircle2, Truck, Navigation, AlertCircle, ArrowUpRight } from 'lucide-react';
+import {
+  Sparkles,
+  Activity,
+  Users,
+  Calendar,
+  CheckCircle2,
+  Truck,
+  Navigation,
+  AlertCircle,
+  ArrowUpRight,
+  UserCheck,
+  Search,
+  Star,
+  ShieldCheck,
+  Cloud,
+} from 'lucide-react';
 
 export const ProjectMockup = ({ project }) => {
   const [activeTab, setActiveTab] = useState(0);
@@ -143,6 +158,102 @@ export const ProjectMockup = ({ project }) => {
           <span className="text-accent font-medium flex items-center gap-1">
             TestFlight Beta <ArrowUpRight className="w-3 h-3" />
           </span>
+        </div>
+      </div>
+    );
+  }
+
+  if (project.id === 'connexus') {
+    return (
+      <div className="w-full h-full min-h-[280px] sm:min-h-[340px] md:h-full bg-gradient-to-br from-[#1A1207] via-[#24170A] to-[#120B04] p-4 sm:p-5 rounded-[24px] sm:rounded-[32px] flex flex-col justify-between relative overflow-hidden border border-amber-500/25 shadow-2xl">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/15 rounded-full blur-2xl pointer-events-none" />
+
+        {/* Top App Header */}
+        <div className="relative z-10 flex items-center justify-between pb-2.5 border-b border-frost/10">
+          <div className="flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-600 flex items-center justify-center shadow-lg shadow-amber-500/30">
+              <UserCheck className="w-4 h-4 text-white" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-frost font-bold tracking-tight text-xs sm:text-sm">ConneXus Contact Hub</span>
+                <span className="text-[9px] font-medium bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded-full">Spring Boot 3</span>
+              </div>
+              <p className="text-secondary text-[10px]">OAuth 2.0 · MySQL &amp; Cloudinary</p>
+            </div>
+          </div>
+          <button
+            onClick={() => setActiveTab(activeTab === 0 ? 1 : 0)}
+            className="text-[10px] text-amber-300 bg-amber-950/70 border border-amber-500/30 px-2.5 py-1 rounded-full flex items-center gap-1 hover:bg-amber-900/60 transition-colors cursor-pointer"
+          >
+            {activeTab === 0 ? 'View Screenshot' : 'Live UI'}
+          </button>
+        </div>
+
+        {/* Body: Toggle between Live Interactive Mockup and Production Screenshot */}
+        {activeTab === 1 ? (
+          <div className="relative z-10 my-2.5 flex-1 rounded-xl overflow-hidden border border-frost/15 bg-black-200/80 min-h-[160px] flex items-center justify-center">
+            <img
+              src="/assets/connexus-contacts.png"
+              alt="Connexus Contacts Dashboard"
+              className="w-full h-full object-cover object-top rounded-xl"
+            />
+          </div>
+        ) : (
+          <div className="relative z-10 my-2 flex-1 flex flex-col justify-between gap-1.5">
+            {/* Search Bar */}
+            <div className="flex items-center gap-2 bg-black-200/80 rounded-xl border border-frost/10 px-3 py-1.5">
+              <Search className="w-3.5 h-3.5 text-secondary" />
+              <span className="text-secondary text-[11px] font-light truncate">Search contacts by name, phone or email...</span>
+              <span className="ml-auto text-[9px] bg-primary/60 border border-frost/10 px-2 py-0.5 rounded text-frost/70 shrink-0">All (24)</span>
+            </div>
+
+            {/* Contact Rows */}
+            <div className="flex flex-col gap-1.5">
+              {[
+                { name: 'Sarah Jenkins', role: 'Product Lead', email: 'sarah.j@techcorp.io', phone: '+1 (555) 382-9012', favorite: true },
+                { name: 'Alex Rivera', role: 'Design Systems', email: 'alex.r@designhub.com', phone: '+1 (555) 724-1189', favorite: true },
+                { name: 'Devon Vance', role: 'Backend Engineer', email: 'devon@cloudsystems.dev', phone: '+1 (555) 901-4432', favorite: false },
+              ].map((c) => (
+                <div
+                  key={c.name}
+                  className="bg-black-200/70 hover:bg-black-200 border border-frost/10 hover:border-amber-500/40 rounded-xl p-2 flex items-center justify-between transition-all"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-amber-600 to-orange-500 flex items-center justify-center text-[10px] font-bold text-white shrink-0">
+                      {c.name.split(' ').map((n) => n[0]).join('')}
+                    </div>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-1.5">
+                        <p className="text-frost text-xs font-semibold truncate leading-none">{c.name}</p>
+                        {c.favorite && <Star className="w-3 h-3 text-amber-400 fill-amber-400 shrink-0" />}
+                      </div>
+                      <p className="text-secondary text-[10px] truncate mt-0.5">{c.email} · {c.phone}</p>
+                    </div>
+                  </div>
+                  <span className="text-[9px] px-2 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 shrink-0">
+                    {c.role}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Footer Details */}
+        <div className="relative z-10 pt-1.5 border-t border-frost/10 flex items-center justify-between text-[10px] text-secondary">
+          <div className="flex items-center gap-2">
+            <span className="flex items-center gap-1 text-emerald-400">
+              <ShieldCheck className="w-3 h-3" />
+              OAuth 2.0 (Google &amp; GitHub)
+            </span>
+            <span>·</span>
+            <span className="flex items-center gap-1 text-sky-400">
+              <Cloud className="w-3 h-3" />
+              Cloudinary CDN
+            </span>
+          </div>
+          <span className="text-amber-400 font-mono text-[9px]">MySQL 8.0</span>
         </div>
       </div>
     );

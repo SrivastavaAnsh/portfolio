@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { flagshipProjects, secondaryProjects } from '../data/portfolio';
+import { flagshipProjects } from '../data/portfolio';
 import ProjectMockup from './ProjectMockup';
 import { ArrowUpRight, Github, Sparkles } from 'lucide-react';
 
@@ -169,67 +169,6 @@ export const ProjectsSection = () => {
             progress={scrollYProgress}
           />
         ))}
-      </div>
-
-      {/* More Builds Grid */}
-      <div className="max-w-6xl mx-auto mt-16 sm:mt-24">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 pb-3 border-b border-frost/10">
-          <div>
-            <p className="text-secondary uppercase tracking-[0.25em] text-[10px] font-light">Additional Engineering</p>
-            <h3 className="text-frost font-bold uppercase tracking-wide text-xl sm:text-2xl mt-0.5">
-              More Builds &amp; Repositories
-            </h3>
-          </div>
-          <p className="text-secondary text-xs font-light mt-1 sm:mt-0">
-            Open-source repositories on GitHub
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {secondaryProjects.map((project) => (
-            <motion.div
-              key={project.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="group rounded-2xl border border-frost/15 bg-black-100 p-5 hover:border-frost/40 transition-all duration-300 flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-[9px] uppercase tracking-widest text-accent font-semibold px-2.5 py-0.5 rounded-full bg-accent/15 border border-accent/30">
-                    {project.badge}
-                  </span>
-                  <a
-                    href={project.source_code_link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-frost/60 hover:text-frost transition-colors"
-                  >
-                    <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  </a>
-                </div>
-                <h4 className="text-frost font-bold uppercase tracking-wide text-lg sm:text-xl">
-                  {project.name}
-                </h4>
-                <p className="text-secondary text-xs font-light leading-relaxed mt-2 line-clamp-3">
-                  {project.description}
-                </p>
-              </div>
-
-              <div className="flex flex-wrap gap-1.5 mt-4 pt-3 border-t border-frost/10">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-[9px] uppercase tracking-wider text-frost/70 border border-frost/15 rounded-full px-2 py-0.5 bg-primary/40"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
       </div>
     </section>
   );
