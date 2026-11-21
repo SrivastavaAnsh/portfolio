@@ -9,7 +9,7 @@ export const Footer = () => {
         {/* Top Row */}
         <div>
           <span className="text-frost text-2xl sm:text-3xl font-black uppercase tracking-widest block">
-            {personalInfo.firstName} {personalInfo.name.split(' ')[1]}
+            {personalInfo.name}
           </span>
           <p className="text-secondary text-xs sm:text-sm font-light mt-1 max-w-md">
             Apple Swift Student Challenge 2026 Winner · iOS Developer &amp; Product Designer.

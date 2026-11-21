@@ -51,8 +51,8 @@ export const Navbar = () => {
           }}
           className="flex flex-col leading-tight cursor-pointer"
         >
-          <span className="text-frost text-lg md:text-xl font-semibold uppercase tracking-widest">
-            {personalInfo.firstName}
+          <span className="text-frost text-lg md:text-xl font-semibold uppercase tracking-wider">
+            {personalInfo.name}
           </span>
           <span className="text-frost/50 text-[10px] md:text-xs font-light tracking-[0.24em] hidden sm:block">
             <span className="normal-case">iOS</span> DEVELOPER &amp; PRODUCT DESIGNER
